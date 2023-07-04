@@ -1,0 +1,41 @@
+<div class="container-fluid p-0 bg-maincolor">
+  <div class="row justify-content-center mx-0" style="height: 100vh;">
+    <div class="d-flex align-items-center justify-content-center main-divition col-lg-5 col-md-6 col-sm-12 col-12">
+      <form [formGroup]="registerForm" class="form-divition auth-forms">
+        <div class="form-group ">
+          <p class="lead text-left Login-text">Register</p>
+        </div>
+        <mat-form-field  class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" required>
+          <mat-error *ngIf="hasError('email', 'required')">Please enter your account email.</mat-error>
+          <mat-error *ngIf="hasError('email', 'serverError')">{{registerForm.controls['email'].errors.message}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field  class="w-100">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name" required>
+          <mat-error *ngIf="hasError('name', 'required')">Please enter your name.</mat-error>
+          <mat-error *ngIf="hasError('name', 'serverError')">{{registerForm.controls['name'].errors.message}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field  class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required>
+          <mat-error *ngIf="hasError('password', 'required')">Please enter your password.</mat-error>
+          <mat-error *ngIf="hasError('password', 'pattern')">Password must contain (1) Uppercase character, (1) special character, (1) number, it should be 8 characters and more!</mat-error>
+          <mat-error *ngIf="hasError('password', 'maxlength')">Password must be less than20 characters!</mat-error>
+          <mat-error *ngIf="hasError('password', 'serverError')">{{registerForm.controls['password'].errors.message}}</mat-error>
+        </mat-form-field>
+
+        <div class="register-nxt text-right pb-3 pt-2">
+          <a routerLink="/auth/login" class="">Back to Login</a>
+        </div>
+
+        <div class="pt-3">
+          <button mat-raised-button color="primary" (click)="Register()">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
