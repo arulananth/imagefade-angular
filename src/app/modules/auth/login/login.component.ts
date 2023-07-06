@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
-// import { AuthService } from 'src/app/shared/services/auth.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +19,7 @@ export class LoginComponent implements OnInit{
     public router: Router,
     public http: HttpClient,
     private apiService: ApiService,
-    // private auth: AuthService,
-    // public toaster: ToastrService
+    private toastr: ToastrService
   ) {
 
   }
@@ -48,13 +46,20 @@ export class LoginComponent implements OnInit{
     if (this.loginForm.invalid) {
       return;
     }
-    this.apiService.post('/user/login', this.loginForm.value).subscribe(
-      (data: any) => {
-        console.log('data',data);
-        this.router.navigate(['/pages/home']);
+    this.apiService.post('/auth/signIn', this.loginForm.value).subscribe(
+      (response: any) => {
+        console.log('response',response);
+        if(response && response.res){
+          this.toastr.success('Login Successfully...');
+          localStorage.setItem('Token', JSON.stringify(response.res));
+          setTimeout(() => {
+            this.router.navigate(['/pages/home']);
+          }, 1500);
+        }
       },
       (err: any) => {
         console.log('err',err);
+        this.toastr.error(err.message.errorMessage);
       }
     );
   }
