@@ -14,12 +14,12 @@
                 <div class="price-box-inner img-grayscale" style="background-image: url(../../../../assets/images/price/1.jpg)">
                   <ul>
                     <li class="pricing-title">
-                      <h3 class="pricing-pt-title">Standart</h3>
+                      <h3 class="pricing-pt-title">{{priceList[1]?.title}}</h3>
                     </li>
-                    <li class="pricing-prices"> <sup class="pricing-dolar">$</sup> <span class="pricing-price">300</span> </li>
+                    <li class="pricing-prices"> <sup class="pricing-dolar">$</sup> <span class="pricing-price">{{priceList[1]?.price}}</span> </li>
                     <li class="pricing-content">
                       <ul>
-                        <li>3 Hours Session</li>
+                        <li>{{priceList[1]?.description}}</li>
                         <li>Photo Editing</li>
                         <li>50 Digital Images</li>
                         <li>Online Gallery</li>
@@ -34,12 +34,12 @@
                 <div class="price-box-inner" style="background-image: url(../../../../assets/images/price/2.jpg)">
                   <ul>
                     <li class="pricing-title">
-                      <h3 class="pricing-pt-title">Premium</h3>
+                      <h3 class="pricing-pt-title">{{priceList[0]?.title}}</h3>
                     </li>
-                    <li class="pricing-prices"> <sup class="pricing-dolar">$</sup> <span class="pricing-price">450</span> </li>
+                    <li class="pricing-prices"> <sup class="pricing-dolar">$</sup> <span class="pricing-price">{{priceList[0]?.price}}</span> </li>
                     <li class="pricing-content">
                       <ul>
-                        <li>6 Hours Session</li>
+                        <li>{{priceList[0]?.description}}</li>
                         <li>Photo Editing</li>
                         <li>100 Digital Images</li>
                         <li>Online Gallery</li>
