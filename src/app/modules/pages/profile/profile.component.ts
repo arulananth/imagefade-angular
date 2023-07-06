@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -11,23 +12,24 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class ProfileComponent implements OnInit {
 
-  loginForm: FormGroup | any;
+  changePasswordForm: FormGroup | any;
+  hide = true;
+  hide1 = true;
 
   constructor(
     public formBuilder: FormBuilder,
     public router: Router,
     public http: HttpClient,
     private apiService: ApiService,
-    // private auth: AuthService,
-    // public toaster: ToastrService
+    private toastr: ToastrService
   ) {
 
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+    this.changePasswordForm = this.formBuilder.group({
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]]
       // password: ['', [Validators.required,
       //   Validators.pattern(
       //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
@@ -39,20 +41,21 @@ export class ProfileComponent implements OnInit {
   }
 
   public hasError = (controlName: string, errorName: string) => {
-    return this.loginForm.controls[controlName].hasError(errorName);
+    return this.changePasswordForm.controls[controlName].hasError(errorName);
   }
 
-  login() {
-    if (this.loginForm.invalid) {
+  changePassword() {
+    if (this.changePasswordForm.invalid) {
       return;
     }
-    this.apiService.post('/user/login', this.loginForm.value).subscribe(
-      (data: any) => {
-        console.log('data',data);
-        this.router.navigate(['/pages/home']);
+    this.apiService.post('/users/change-password', this.changePasswordForm.value).subscribe(
+      (response: any) => {
+        console.log('response',response);
+        this.toastr.success(response.res.message);
       },
       (err: any) => {
         console.log('err',err);
+        this.toastr.error(err.message.errorMessage);
       }
     );
   }

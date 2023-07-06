@@ -12,14 +12,14 @@
             </div>
             <mat-form-field  class="w-100">
               <mat-label>Email</mat-label>
-              <input matInput type="email" formControlName="email" required>
+              <input matInput type="email" formControlName="email" required autocomplete="off">
               <mat-error *ngIf="hasError('email', 'required')">Please enter your account email.</mat-error>
               <mat-error *ngIf="hasError('email', 'serverError')">{{loginForm.controls['email'].errors.message}}</mat-error>
             </mat-form-field>
 
             <mat-form-field  class="w-100">
               <mat-label>Password</mat-label>
-              <input matInput type="password" formControlName="password" required [type]="hide ? 'password' : 'text'">
+              <input matInput type="password" formControlName="password" required [type]="hide ? 'password' : 'text'" autocomplete="off">
               <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>

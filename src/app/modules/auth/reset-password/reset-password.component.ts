@@ -31,14 +31,14 @@ export class ResetPasswordComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       token: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      confirm_password: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]]
       // password: ['', [
       //   Validators.required,
       //   Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/),
       //   Validators.minLength(8),
       //   Validators.maxLength(20)
       // ]],
-      // confirm_password: ['', [
+      // confirmPassword: ['', [
       //   Validators.required,
       //   Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/),
       //   Validators.minLength(8),
@@ -49,7 +49,7 @@ export class ResetPasswordComponent implements OnInit {
   passwordMatchValidator(): ValidatorFn {
     return (formGroup: any): ValidationErrors | null => {
       const password = formGroup.get('password')?.value;
-      const confirmPassword = formGroup.get('confirm_password')?.value;
+      const confirmPassword = formGroup.get('confirmPassword')?.value;
 
       if (password !== confirmPassword) {
         return { passwordMismatch: true };
@@ -70,7 +70,7 @@ export class ResetPasswordComponent implements OnInit {
     this.apiService.post('/auth/resetpassword', this.resetForm.value).subscribe(
       (response: any) => {
         console.log('response',response);
-        this.toastr.success(response.res.message);
+        this.toastr.success('Password change successfully... ');
         this.router.navigate(['/auth/login']);
       },
       (err: any) => {
