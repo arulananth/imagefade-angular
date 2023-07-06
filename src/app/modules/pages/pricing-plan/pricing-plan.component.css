@@ -132,3 +132,10 @@ sub, sup {
   /* font-weight: 300; */
   color: #fff;
 }
+.plan-buy-btn{
+  color: #fff !important;
+  background-color: #9c5451 !important;
+  border-radius: 0px;
+  font-family: 'Oswald', sans-serif;
+  padding: 20px 40px;
+}

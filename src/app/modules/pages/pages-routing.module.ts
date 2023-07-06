@@ -5,6 +5,8 @@ import { PricingPlanComponent } from './pricing-plan/pricing-plan.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BuyPlanComponent } from './buy-plan/buy-plan.component';
+import { BuyPlanResolver } from '../../shared/services/buyplan.resolver';
 
 const routes: Routes = [
   {
@@ -19,6 +21,12 @@ const routes: Routes = [
       path: 'pricing',
       component: PricingPlanComponent,
       data: { title: 'Pricing Plan' }
+    },
+    {
+      path: 'pricing/:id',
+      component: BuyPlanComponent,
+      resolve: { message : BuyPlanResolver },
+      data: { title: 'Buy Plan' }
     },
     {
       path: 'history',
