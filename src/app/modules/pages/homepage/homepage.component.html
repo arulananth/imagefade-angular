@@ -12,7 +12,7 @@
                     <div class="con">
                         <div class="numb">01</div>
                         <h5>Wedding Shots</h5>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam sed faucibus sem the drana.</p>
+                        <p>Zoom out to show majority of body, facing straight. Use a high resolution photo that has been resized to at least 1024px width.</p>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <div class="con">
                         <div class="numb">02</div>
                         <h5>Portrait Photography</h5>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam sed faucibus sem the drana.</p>
+                        <p>Avoid baggy clothing and coats. Single piece dresses are OK. Tighter clothing have better results.</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <div class="con">
                         <div class="numb">03</div>
                         <h5>Travel Photography</h5>
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam sed faucibus sem the drana.</p>
+                        <p>Good contrast between skin and clothing colors. Hair not blocking too much of body.</p>
                     </div>
                 </div>
             </div>
@@ -61,8 +61,16 @@
                     </div>
                 </div>
             </div> -->
-            <div class="section-button col-md-12 text-center mt-5 mb-40">
+            <!-- <div class="section-button col-md-12 text-center mt-5 mb-40">
               <button class="upload-btn" mat-button (click)="upload()"><i class="fas fa-cloud-upload pr-2"></i> Upload your image</button>
+            </div> -->
+            <div class="col-md-12 text-center mt-5 mb-40">
+              <button class="upload-btn" mat-button (click)="openUploadDialog()">
+                <i class="fas fa-cloud-upload pr-2"></i> Upload your image
+              </button>
+              <div *ngIf="selectedImage" class="image-popup">
+                <img [src]="selectedImage" alt="Uploaded Image">
+              </div>
             </div>
          </div>
       </div>

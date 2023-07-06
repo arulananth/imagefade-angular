@@ -3,17 +3,20 @@
     <div id="main-content">
       <section class="services pt-130">
         <div class="container">
-          <div class="row">
+          <!-- <div class="row">
             <div class="section-head col-md-12 text-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
               <h4>Profile</h4>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="d-flex align-items-center justify-content-center main-divition col-lg-6 col-md-6 col-sm-12 col-12">
               <img class="w-100" src="../../../../assets/images/about.jpg" alt="Form Image">
             </div>
             <div class="d-flex align-items-center justify-content-center main-divition col-lg-6 col-md-6 col-sm-12 col-12">
               <form [formGroup]="changePasswordForm" class="form-divition auth-forms">
+                <div class="form-group ">
+                  <p class="lead text-left Login-text">Change Password</p>
+                </div>
                 <mat-form-field  class="w-100">
                   <mat-label>Password</mat-label>
                   <input matInput type="password" formControlName="password" required [type]="hide ? 'password' : 'text'" autocomplete="off">

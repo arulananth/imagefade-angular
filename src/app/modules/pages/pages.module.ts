@@ -11,6 +11,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BuyPlanComponent } from './buy-plan/buy-plan.component';
+import { PreviewImageComponent } from './preview-image/preview-image.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BuyPlanComponent } from './buy-plan/buy-plan.component';
     HomepageComponent,
     HistoryComponent,
     ProfileComponent,
-    BuyPlanComponent
+    BuyPlanComponent,
+    PreviewImageComponent
   ],
   imports: [
     CommonModule,

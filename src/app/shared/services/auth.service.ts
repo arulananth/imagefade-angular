@@ -7,10 +7,22 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
 
+  userId: any;
+  userRole: any;
+  userEmail: any;
+
   constructor(
     private http: ApiService,
     private router: Router
-    ) { }
+    ) {
+      let user: any = localStorage.getItem('currentUser');
+      if (user) {
+        user = JSON.parse(user);
+        this.userId = user._id;
+        this.userRole = user.role;
+        this.userEmail = user.email;
+      }
+     }
 
   logOut() {
     localStorage.removeItem('currentUser');
