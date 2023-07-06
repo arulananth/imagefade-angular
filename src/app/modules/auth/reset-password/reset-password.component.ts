@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,6 +18,8 @@ export class ResetPasswordComponent implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     public http: HttpClient,
+    private apiService:ApiService,
+    private toastr: ToastrService
   ) {
 
   }
@@ -59,6 +63,17 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetForm.invalid) {
       return;
     }
+    this.apiService.post('/auth/resetpassword', this.resetForm.value).subscribe(
+      (response: any) => {
+        console.log('response',response);
+        this.toastr.success(response.res.message);
+        this.router.navigate(['/auth/login']);
+      },
+      (err: any) => {
+        console.log('err',err);
+        this.toastr.error(err.message.errorMessage);
+      }
+    );
   }
 
 

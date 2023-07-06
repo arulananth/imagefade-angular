@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: 'Outfit';
+  src: url('../src/assets/font/Outfit/static/Outfit-Regular.ttf') format('truetype');
+  font-family: 'Oswald';
+  src: url('../src/assets/font/Outfit/static/Outfit-Regular.ttf') format('truetype'); /* Adjust the file path and format if needed */
+  /* Add additional font-face declarations for different font weights or styles if available */
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  /* font-family: Roboto, "Helvetica Neue", sans-serif;  */
+  font-family: 'Outfit', sans-serif;
+}
+
+.toast-success {
+  background-color: green !important;
+  box-shadow: none !important;
+}
+.toast-error {
+  background-color: red !important;
+  box-shadow: none !important;
+}
+.toast-error {
+  background-image: none !important;
+}
+.toast-success {
+  background-image: none !important;
+}
+.toast-message {
+  word-wrap: break-word;
+  font-size: 14px !important;
+  margin-left: -20px;
+}
+

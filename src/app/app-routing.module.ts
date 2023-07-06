@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthModule } from './modules/auth/auth.module';
 import { PagesModule } from './modules/pages/pages.module';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     AuthModule,
-    PagesModule
+    PagesModule,
+    ToastrModule.forRoot(),
   ],
   exports: [RouterModule],
   providers: [],
