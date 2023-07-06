@@ -1,3 +1,6 @@
+.pt-130{
+  padding-top: 130px;
+}
 .mat-form-field-invalid .mat-input-element {
   border-color: #f44336;
 }

@@ -1,5 +1,10 @@
+.fixed-top {
+  padding: 0 60px;
+  background-color: #191919;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.2)!important;
+}
 .logo-img {
-  padding: 20px 0;
+  padding: 10px 0;
   width: 115px;
   text-align: center;
 }
