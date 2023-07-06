@@ -10,6 +10,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProfileComponent } from './profile/profile.component';
     PricingPlanComponent,
     HomepageComponent,
     HistoryComponent,
-    ProfileComponent
+    ProfileComponent,
+    BuyPlanComponent
   ],
   imports: [
     CommonModule,

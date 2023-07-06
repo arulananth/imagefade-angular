@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pricing-plan',
@@ -13,7 +14,8 @@ export class PricingPlanComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: Router
   ) {
 
   }
@@ -33,6 +35,10 @@ export class PricingPlanComponent implements OnInit {
         this.toastr.error(err.message.errorMessage);
       }
     );
+  }
+
+  buyPlan(price: any){
+    this.route.navigate(['pages/pricing/' + price._id]);
   }
 
 }

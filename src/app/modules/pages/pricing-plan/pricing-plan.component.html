@@ -9,27 +9,30 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4" *ngFor="let price of priceList">
               <div class="price-box animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <div class="price-box-inner img-grayscale" style="background-image: url(../../../../assets/images/price/1.jpg)">
                   <ul>
                     <li class="pricing-title">
-                      <h3 class="pricing-pt-title">{{priceList[1]?.title}}</h3>
+                      <h3 class="pricing-pt-title">{{price?.title}}</h3>
                     </li>
-                    <li class="pricing-prices"> <sup class="pricing-dolar">$</sup> <span class="pricing-price">{{priceList[1]?.price}}</span> </li>
+                    <li class="pricing-prices"> <sup class="pricing-dolar">$</sup> <span class="pricing-price">{{price?.price}}</span> </li>
                     <li class="pricing-content">
                       <ul>
-                        <li>{{priceList[1]?.description}}</li>
+                        <li>{{price?.description}}</li>
                         <li>Photo Editing</li>
                         <li>50 Digital Images</li>
                         <li>Online Gallery</li>
                       </ul>
                     </li>
                   </ul>
+                  <div class="button-plan mt-4">
+                    <button mat-raised-button class="plan-buy-btn" (click)="buyPlan(price)">Buy</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
               <div class="price-box animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <div class="price-box-inner" style="background-image: url(../../../../assets/images/price/2.jpg)">
                   <ul>
@@ -48,8 +51,8 @@
                   </ul>
                 </div>
               </div>
-            </div>
-            <div class="col-md-4">
+            </div> -->
+            <!-- <div class="col-md-4">
               <div class="price-box animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <div class="price-box-inner" style="background-image: url(../../../../assets/images/price/3.jpg)">
                   <ul>
@@ -68,7 +71,7 @@
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>

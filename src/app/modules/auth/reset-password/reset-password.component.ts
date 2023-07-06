@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class ResetPasswordComponent implements OnInit {
 
   resetForm: FormGroup | any;
+  hide = true;
+  hide1 = true;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -28,19 +30,21 @@ export class ResetPasswordComponent implements OnInit {
     this.resetForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       token: ['', [Validators.required]],
-      password: ['', [
-        Validators.required,
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/),
-        Validators.minLength(8),
-        Validators.maxLength(20)
-      ]],
-      confirm_password: ['', [
-        Validators.required,
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/),
-        Validators.minLength(8),
-        Validators.maxLength(20)
-      ], this.passwordMatchValidator()]
-    });
+      password: ['', [Validators.required]],
+      confirm_password: ['', [Validators.required]]
+      // password: ['', [
+      //   Validators.required,
+      //   Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/),
+      //   Validators.minLength(8),
+      //   Validators.maxLength(20)
+      // ]],
+      // confirm_password: ['', [
+      //   Validators.required,
+      //   Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/),
+      //   Validators.minLength(8),
+      //   Validators.maxLength(20)
+      // ], this.passwordMatchValidator()]
+    }, {validator: this.passwordMatchValidator});
   }
   passwordMatchValidator(): ValidatorFn {
     return (formGroup: any): ValidationErrors | null => {
