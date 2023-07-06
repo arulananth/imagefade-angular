@@ -1,0 +1,9 @@
+#wrapper{
+  color: #999;
+  background: #191919;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  z-index: 0;
+  padding: 0 60px;
+}

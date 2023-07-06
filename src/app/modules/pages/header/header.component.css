@@ -3,3 +3,23 @@
   width: 115px;
   text-align: center;
 }
+.navbar-nav .nav-item > a{
+  font-family: 'Outfit',sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #999;
+  margin: 1px;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+/* .navbars .navbar-nav .nav-item .active {
+  color: #9c5451 !important;
+} */
+.logout-btn{
+  cursor: pointer;
+}
+.active {
+  color: #9c5451 !important;
+}

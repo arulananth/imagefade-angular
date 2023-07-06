@@ -8,13 +8,17 @@ import { FooterComponent } from './footer/footer.component';
 import { PricingPlanComponent } from './pricing-plan/pricing-plan.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { HomepageComponent } from './homepage/homepage.component';
+import { HistoryComponent } from './history/history.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     PricingPlanComponent,
-    HomepageComponent
+    HomepageComponent,
+    HistoryComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
