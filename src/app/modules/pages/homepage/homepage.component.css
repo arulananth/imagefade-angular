@@ -1,0 +1,135 @@
+.pt-130 {
+  padding-top: 30px;
+}
+.section-head {
+  overflow: hidden;
+  margin: 30px 0;
+}
+.section-head h4 {
+  font-size: 35px;
+  text-transform: uppercase;
+  position: relative;
+  margin: 0;
+  letter-spacing: 3px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  line-height: 1.25em;
+  color: #9c5451;
+}
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.mb-40 {
+  margin-bottom: 40px;
+}
+.services .item:hover:after {
+  opacity: 0;
+}
+.services .bg-1 {
+  background-image: url(../../../../assets/images/01.jpg);
+}
+.services .bg-2 {
+  background-image: url(../../../../assets/images/upload/1.png);
+}
+.services .bg-3 {
+  background-image: url(../../../../assets/images/03.jpg);
+}
+.services .bg-4 {
+  background-image: url(../../../../assets/images/04.jpg);
+}
+.services .bg-5 {
+  background-image: url(../../../../assets/images/upload/3.png);
+}
+.services .bg-6 {
+  background-image: url(../../../../assets/images/upload/2.png);
+}
+.services .item {
+  padding: 70px 20px;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 0% !important;
+  height: 600px;
+  align-items: center;
+  display: flex;
+}
+.services .item:before {
+  /* content: ""; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(12, 12, 12, 0.5);
+}
+.services .item .con {
+  position: relative;
+  z-index: 7;
+}
+.services .item .numb {
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  /* font-family: 'Oswald', sans-serif; */
+  color: transparent;
+  -webkit-text-stroke: 1px #9c5451;
+  opacity: .9;
+  margin-bottom: 20px;
+}
+.services .item:hover .numb {
+  -webkit-text-stroke: 1px #fff;
+}
+.services .item h5 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+}
+.services .item p {
+  font-size: 15px;
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.75em;
+  font-weight: 300;
+  color: #999;
+}
+.services .item:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #191919;
+  z-index: 1;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+.services .item:hover h5, .services .item:hover p, .services .item:hover h5 .services .item:hover span {
+  color: #fff;
+}
+.upload-btn{
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  line-height: 1.75em;
+  -webkit-transition: background-color .15s ease-out;
+  transition: background-color .15s ease-out;
+  border: none;
+  color: #fff !important;
+  background: #9c5451;
+  padding: 10px 27px;
+  position: relative;
+  overflow: hidden;
+  height: 46px;
+  border-radius: 0px;
+}

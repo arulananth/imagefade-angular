@@ -1,0 +1,33 @@
+.pozo-footer-container {
+  border-top: 1px solid #222;
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.pozo-social-icons-item {
+  display: inline-block;
+}
+.pozo-social-icons{
+  margin: 0;
+  padding: 0;
+}
+.pozo-social-icon {
+  color: #9c5451;
+  font-size: 16px;
+  margin: 0 10px;
+}
+.pozo-social-icon:hover {
+  color: #ffffff;
+}
+.pozo-copyright {
+  color: #999;
+  font-size: 13px;
+  margin-right: 10px;
+  text-align: right;
+  font-family: 'Outfit', sans-serif;
+}
+.pozo-copyright span {
+  font-size: 13px;
+  font-family: 'Outfit', sans-serif;
+  color: #9c5451;
+}

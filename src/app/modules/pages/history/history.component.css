@@ -1,0 +1,115 @@
+/* .projects {
+} */
+.pt-130 {
+  padding-top: 30px;
+}
+.mb-60 {
+  margin-bottom: 60px;
+}
+.section-head {
+  overflow: hidden;
+  margin: 30px 0;
+}
+.section-head h4 {
+  font-size: 35px;
+  text-transform: uppercase;
+  position: relative;
+  margin: 0;
+  letter-spacing: 3px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  color: #9c5451;
+}
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.projects .item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.o-hidden {
+  overflow: hidden;
+}
+.projects .item img {
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  -webkit-filter: brightness(100%);
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.projects .item .con {
+  padding: 30px;
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  text-align: center;
+}
+.projects .item .con .category {
+  color: #9c5451;
+  font-size: 20px;
+  /* font-family: 'Oswald', sans-serif; */
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+}
+span, a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+.projects .item .con .category a:last-child {
+  margin-right: 0;
+}
+.projects .item .con .category a {
+  margin-right: 5px;
+  position: relative;
+  font-size: 35px;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  opacity: .9;
+}
+.projects .item .con h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 30px;
+  text-transform: none;
+  font-weight: 400;
+}
+.projects .item .con h5 a {
+  color: #fff;
+}
+.projects .item .con i {
+  color: #9c5451;
+  font-size: 20px;
+}
+.projects .item:hover .con {
+  bottom: 0;
+}
+.projects .item:hover img {
+  -webkit-filter: none;
+  filter: none;
+  -webkit-transform: scale(1.09, 1.09);
+  transform: scale(1.09, 1.09);
+  -webkit-filter: brightness(40%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
