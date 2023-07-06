@@ -1,15 +1,42 @@
-<div class="containers">
-  <app-header></app-header>
+<div class="containers p-3">
     <div id="main-content">
-      <section class="projects pt-130 mb-60">
+      <section class="projects mb-60">
         <div class="container">
           <div class="row">
-            <div class="section-head col-md-12 text-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
-              <h4>Buy Plan</h4>
+            <div class="dialog-header d-flex justify-content-between align-items-center w-100 pb-4">
+              <h2 mat-dialog-title class="mb-0 buyplan-text">Buy Plan</h2>
+              <span class="mat-close-x" [mat-dialog-close]="false" cdkFocusInitial><i class="fa-regular fa-circle-xmark"></i></span>
+            </div>
+            <div class="text-center col-lg-11 col-md-11 col-sm-12 col-12 m-auto">
+              <form [formGroup]="paymenyForm">
+                <div>
+                  <!-- <h4 class="text-left d-flex align-items-center"><i class="fa-brands fa-bitcoin bitcoin-color pr-2"></i><b>Bitcoin</b></h4> -->
+                  <div class="amount-bit pb-3">
+                    <p class="pay-title">Amount</p>
+                    <h1>5.88899548855</h1>
+                  </div>
+                  <div class="pay-input amount-bit pb-3 pt-3">
+                    <p class="pay-title">Address</p>
+                    <div class="input-container">
+                      <i class="fa-brands fa-bitcoin icon"></i>
+                      <input type="text" class="input-styles" formControlName="address">
+                    </div>
+                  </div>
+                  <div class="pay-input pt-3">
+                    <p class="pay-title">Payment Link</p>
+                    <div class="input-container">
+                      <i class="fa-brands fa-bitcoin icon"></i>
+                      <input type="text" class="input-styles" formControlName="link">
+                    </div>
+                  </div>
+                  <div class="pt-4">
+                    <button type="button" mat-raised-button class="login-btn" (click)="payment()">Payment</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </section>
     </div>
-  <app-footer></app-footer>
 </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { BuyPlanComponent } from '../buy-plan/buy-plan.component';
 
 @Component({
   selector: 'app-pricing-plan',
@@ -15,7 +17,8 @@ export class PricingPlanComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
-    private route: Router
+    private route: Router,
+    public dialog: MatDialog
   ) {
 
   }
@@ -32,13 +35,16 @@ export class PricingPlanComponent implements OnInit {
       },
       (err: any) => {
         console.log('err',err);
-        this.toastr.error(err.message.errorMessage);
       }
     );
   }
 
-  buyPlan(price: any){
-    this.route.navigate(['pages/pricing/' + price._id]);
+  buyPlanDialog(price: any){
+    // this.route.navigate(['pages/pricing/' + price._id]);
+    this.dialog.open(BuyPlanComponent, {
+      width: '40%',
+      data: { price: price }
+    });
   }
 
 }

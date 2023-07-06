@@ -21,13 +21,13 @@
                       <ul>
                         <li>{{price?.description}}</li>
                         <li>Photo Editing</li>
-                        <li>50 Digital Images</li>
+                        <li>{{price?.description.substring(0, 3)}} Digital Images</li>
                         <li>Online Gallery</li>
                       </ul>
                     </li>
                   </ul>
                   <div class="button-plan mt-4">
-                    <button mat-raised-button class="plan-buy-btn" (click)="buyPlan(price)">Buy</button>
+                    <button mat-raised-button class="plan-buy-btn" (click)="buyPlanDialog(price)">Buy</button>
                   </div>
                 </div>
               </div>

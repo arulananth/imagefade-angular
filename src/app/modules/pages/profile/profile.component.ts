@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +22,8 @@ export class ProfileComponent implements OnInit {
     public router: Router,
     public http: HttpClient,
     private apiService: ApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private auth: AuthService
   ) {
 
   }
@@ -48,6 +50,8 @@ export class ProfileComponent implements OnInit {
     if (this.changePasswordForm.invalid) {
       return;
     }
+    this.changePasswordForm.addControl('email', new FormControl(this.auth.userEmail));
+    this.changePasswordForm.addControl('verificationCode', new FormControl('123456'));
     this.apiService.post('/users/change-password', this.changePasswordForm.value).subscribe(
       (response: any) => {
         console.log('response',response);
@@ -55,7 +59,7 @@ export class ProfileComponent implements OnInit {
       },
       (err: any) => {
         console.log('err',err);
-        this.toastr.error(err.message.errorMessage);
+        this.toastr.error('Something went wrong... ');
       }
     );
   }

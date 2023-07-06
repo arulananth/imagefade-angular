@@ -51,6 +51,7 @@ export class RegisterComponent implements OnInit {
       (response: any) => {
         console.log('response',response);
         this.toastr.success('Register Successfully...');
+        localStorage.setItem('currentUser', JSON.stringify(response.res));
         this.router.navigate(['/auth/login']);
       },
       (err: any) => {

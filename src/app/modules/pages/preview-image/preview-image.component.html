@@ -1,0 +1,23 @@
+<div class="containers p-3">
+  <div id="main-content">
+    <section class="projects mb-60">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center w-100 pb-4">
+          <h2 class="upload-image">Upload Image</h2>
+          <span class="mat-close-x" [mat-dialog-close]="false" cdkFocusInitial><i class="fa-regular fa-circle-xmark"></i></span>
+        </div>
+        <!-- <div mat-dialog-content>
+          <input type="file" (change)="onFileSelected($event)">
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="uploadImage()">Upload</button>
+          <button mat-button (click)="dialogRef.close()">Cancel</button>
+        </div> -->
+        <!-- <input #Image type="file" (change)="handleFileInput($event.target.files)"/>
+        <img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image"> -->
+        <input #Image type="file" (change)="handleFileInput($event.target)" class="pb-3"/>
+        <img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image">
+      </div>
+    </section>
+  </div>
+</div>
