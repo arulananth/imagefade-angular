@@ -13,7 +13,15 @@
                   <!-- <h4 class="text-left d-flex align-items-center"><i class="fa-brands fa-bitcoin bitcoin-color pr-2"></i><b>Bitcoin</b></h4> -->
                   <div class="amount-bit pb-3">
                     <p class="pay-title">Amount</p>
-                    <h1>5.88899548855</h1>
+                    <h1>{{priceData.price | currency:'USD':true }}</h1>
+                  </div>
+                  <div class="amount-bit pb-3">
+                    <p class="pay-title">BTC</p>
+                    <h1>{{btcPrice  | number:'1.0-7'  }}</h1>
+                  </div>
+                  <div class="amount-bit pb-3">
+                    <p class="pay-title">ETH</p>
+                    <h1>{{ethPrice |number:'1.0-7' }}</h1>
                   </div>
                   <div class="pay-input amount-bit pb-3 pt-3">
                     <p class="pay-title">Address</p>
