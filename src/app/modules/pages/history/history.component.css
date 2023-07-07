@@ -87,11 +87,14 @@ span, a {
   font-family: 'Outfit', sans-serif;
   font-size: 17px;
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   text-transform: none;
   font-weight: 400;
 }
 .projects .item .con h5 a {
+  color: #fff;
+}
+.projects .item .con a {
   color: #fff;
 }
 .projects .item .con i {
