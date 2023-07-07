@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './modules/material.module';
+import { JwtInterceptor } from './shared/guard/httpInterceptor';
+import { ErrorInterceptor } from './shared/guard/ErrorInterceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,18 @@ import { MaterialModule } from './modules/material.module';
     FormsModule,
     MaterialModule
   ],
-  providers: [Title],
+  providers: [Title,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

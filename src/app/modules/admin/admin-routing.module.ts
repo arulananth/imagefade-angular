@@ -1,0 +1,41 @@
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+
+import { UsersComponent } from './users/users.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { HistoryComponent } from './history/history.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+const routes: Routes = [
+  {
+    path: 'admin',
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { title: 'Dashboard' }
+      },
+      {
+        path: 'price',
+        component: UsersComponent,
+        data: { title: 'Price' }
+      },
+      {
+        path: 'transaction',
+        component: TransactionComponent,
+        data: { title: 'Transaction' }
+      },
+      {
+        path: 'history',
+        component: HistoryComponent,
+        data: { title: 'History' }
+      }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class AdminRoutingModule { }

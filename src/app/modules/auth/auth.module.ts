@@ -8,13 +8,15 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from '../material.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,

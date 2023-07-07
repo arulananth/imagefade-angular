@@ -46,5 +46,8 @@ export class PricingPlanComponent implements OnInit {
       data: { price: price }
     });
   }
+  openTransaction(){
+
+  }
 
 }
