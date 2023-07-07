@@ -51,12 +51,22 @@ export class LoginComponent implements OnInit{
       (response: any) => {
         console.log('response',response);
         if(response && response.res){
-          this.toastr.success('Login Successfully...');
-          localStorage.setItem('Token', JSON.stringify(response.res.token));
-          localStorage.setItem('currentUser', JSON.stringify(response.res.user));
-          setTimeout(() => {
-            this.router.navigate(['/pages/home']);
-          }, 1500);
+          if(response.res.user.role === 'user'){
+            this.toastr.success('Login Successfully...');
+            localStorage.setItem('Token', JSON.stringify(response.res.token));
+            localStorage.setItem('currentUser', JSON.stringify(response.res.user));
+            setTimeout(() => {
+              this.router.navigate(['/pages/home']);
+            }, 1500);
+          }
+          else if(response.res.user.role === 'admin'){
+            this.toastr.success('Login Successfully...');
+            localStorage.setItem('Token', JSON.stringify(response.res.token));
+            localStorage.setItem('currentUser', JSON.stringify(response.res.user));
+            setTimeout(() => {
+              this.router.navigate(['/admin/dashboard']);
+            }, 1500);
+          }
         }
       },
       (err: any) => {

@@ -79,14 +79,20 @@
               <button class="upload-btn" mat-button (click)="upload()"><i class="fas fa-cloud-upload pr-2"></i> Upload your image</button>
             </div> -->
 
-            <div class="col-md-12 text-center mt-5 mb-40">
+            <!-- <div class="col-md-12 text-center mt-5 mb-40">
               <button class="upload-btn" mat-button (click)="openUploadDialog()">
                 <i class="fas fa-cloud-upload pr-2"></i> Upload your image
               </button>
-              <div *ngIf="selectedImage" class="image-popup">
-                <img [src]="selectedImage" alt="Uploaded Image">
+            </div> -->
+            <div class="col-md-12 text-center mt-5 mb-40">
+              <button class="upload-btn" mat-button (click)="openUploadDialog()" *ngIf="showButton">
+                <i class="fas fa-cloud-upload pr-2"></i> Upload your image
+              </button>
+              <div class="" *ngIf="!showButton">
+                <h3>Please wait for: {{ remainingTime }} seconds</h3>
               </div>
             </div>
+
          </div>
       </div>
     </section>

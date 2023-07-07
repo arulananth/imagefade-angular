@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
     this.userRole = this.authservice.userRole;
     this.userEmail = this.authservice.userEmail;
     console.log('userRole',this.userRole);
+    console.log('authservice',this.authservice);
   }
 
   ngOnInit(): void {
