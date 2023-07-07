@@ -12,6 +12,7 @@ import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { PreviewImageComponent } from './preview-image/preview-image.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PreviewImageComponent } from './preview-image/preview-image.component';
     HistoryComponent,
     ProfileComponent,
     BuyPlanComponent,
-    PreviewImageComponent
+    PreviewImageComponent,
+    TransactionComponent
   ],
   imports: [
     CommonModule,

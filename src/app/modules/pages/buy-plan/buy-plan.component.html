@@ -3,10 +3,11 @@
       <section class="projects mb-60">
         <div class="container">
           <div class="row">
-            <div class="dialog-header d-flex justify-content-between align-items-center w-100 pb-4">
+            <div class="dialog-header d-flex justify-content-between align-items-center w-100 pb-2">
               <h2 mat-dialog-title class="mb-0 buyplan-text">Buy Plan</h2>
               <span class="mat-close-x" [mat-dialog-close]="false" cdkFocusInitial><i class="fa-regular fa-circle-xmark"></i></span>
             </div>
+            <mat-dialog-content class="mat-typography">
             <div class="text-center col-lg-11 col-md-11 col-sm-12 col-12 m-auto">
               <form [formGroup]="paymenyForm">
                 <div>
@@ -16,11 +17,11 @@
                     <h1>{{priceData.price | currency:'USD':true }}</h1>
                   </div>
                   <div class="row">
-                  <div class="amount-bit col-sm-6 pb-3">
+                  <div class="amount-bit col-sm-6 pt-3 pb-3">
                     <p class="pay-title">BTC</p>
                     <h1>{{btcPrice  | number:'1.0-7'  }}</h1>
                   </div>
-                  <div class="amount-bit col-sm-6 pb-3">
+                  <div class="amount-bit col-sm-6 pt-3 pb-3">
                     <p class="pay-title">ETH</p>
                     <h1>{{ethPrice |number:'1.0-7' }}</h1>
                   </div>
@@ -57,6 +58,7 @@
                 </div>
               </form>
             </div>
+          </mat-dialog-content>
           </div>
         </div>
       </section>

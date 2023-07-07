@@ -1,0 +1,64 @@
+<div class="containers">
+  <app-header></app-header>
+    <div id="main-content">
+      <section class="services pt-130 mb-60">
+        <div class="container">
+          <div class="row">
+            <div class="section-head col-md-12 text-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+              <h4>Transaction</h4>
+            </div>
+          </div>
+          <div class="row">
+            <mat-accordion class="w-100">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="d-flex justify-content-between align-items-center">
+                    <h4 class="text-color-head">Example heading <span class="badge badge-secondary">New</span></h4>
+                    <p class="text-color-head mb-0"><b>7/7/2023</b></p>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="p-3">
+                  <div class="labels">
+                    <div class="text-color-head"><label>User</label></div>
+                    <div class="text-color-head"><label>Transaction</label></div>
+                    <div class="text-color-head"><label>History</label></div>
+                    <div class="text-color-head"><label>Price</label></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-center mt-3 mb-40">
+                      <button class="upload-btn" mat-button (click)="Transaction()">Transaction</button>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="d-flex justify-content-between align-items-center">
+                    <h4 class="text-color-head">Example heading <span class="badge badge-secondary">New</span></h4>
+                    <p class="text-color-head mb-0"><b>7/7/2023</b></p>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="p-3">
+                  <div class="labels">
+                    <div class="text-color-head"><label>User</label></div>
+                    <div class="text-color-head"><label>Transaction</label></div>
+                    <div class="text-color-head"><label>History</label></div>
+                    <div class="text-color-head"><label>Price</label></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-center mt-3 mb-40">
+                      <button class="upload-btn" mat-button (click)="Transaction()">Transaction</button>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </section>
+    </div>
+  <app-footer></app-footer>
+</div>

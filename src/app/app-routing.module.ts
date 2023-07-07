@@ -7,11 +7,12 @@ import { PagesModule } from './modules/pages/pages.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorComponent } from './modules/auth/error/error.component';
 import { AdminModule } from './modules/admin/admin.module';
+import { HomepageComponent } from './modules/pages/homepage/homepage.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/login',
+    redirectTo: 'pages/home',
     pathMatch: 'full',
   },
   {

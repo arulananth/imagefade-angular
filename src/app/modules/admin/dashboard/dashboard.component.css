@@ -4,3 +4,32 @@
 .mb-60 {
   margin-bottom: 60px;
 }
+/* Apply the dark theme to the table */
+.mat-table {
+  color: #fff;
+  background-color: #424242;
+}
+
+/* Apply the dark theme to the table header */
+.mat-header-cell,
+.mat-header-row {
+  background-color: #212121;
+  color: #fff;
+}
+
+/* Apply the dark theme to the table row */
+.mat-row {
+  background-color: #424242;
+  color: #fff;
+}
+
+/* Apply the dark theme to the table row on hover */
+.mat-row:hover {
+  background-color: #616161;
+}
+
+/* Apply the dark theme to the paginator */
+.mat-paginator {
+  background-color: #424242;
+  color: #fff;
+}

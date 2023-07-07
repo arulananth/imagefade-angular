@@ -18,9 +18,6 @@
           <a class="nav-link tab_button_style" [routerLink]="'/pages/home'" routerLinkActive="active"
           [routerLinkActiveOptions]={exact:true}>Home <span class="sr-only">(current)</span></a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/pages/home'" routerLinkActive="active">Upload</a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'/pages/pricing'" routerLinkActive="active">Pricing</a>
         </li>
@@ -30,18 +27,12 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'/pages/profile'" routerLinkActive="active">Profile</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!userRole">
+          <a class="nav-link" [routerLink]="'/auth/login'" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="userRole">
           <a class="nav-link logout-btn" (click)="logout()">Logout</a>
         </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            Profile
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Logout</a>
-          </div>
-        </li> -->
       </ul>
     </div>
   </div>
