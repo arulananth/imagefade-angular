@@ -1,39 +1,53 @@
 <div class="containers">
   <app-header></app-header>
   <div id="main-content">
-    <section class="services pt-130">
+    <section class="projects pt-130">
       <div class="container">
         <div class="row">
             <div class="section-head col-md-12 text-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <h4>Uploads</h4>
             </div>
-            <div class="col-md-4 mb-40 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
-                <div class="item bg-2">
-                    <div class="con">
-                        <div class="numb">01</div>
-                        <h5>Wedding Shots</h5>
-                        <p>Zoom out to show majority of body, facing straight. Use a high resolution photo that has been resized to at least 1024px width.</p>
-                    </div>
+            <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+              <div class="item">
+                <div class="numb text-center">
+                  <span class="category">
+                    <a [routerLink]="'/pages/history'">01</a>
+                  </span>
                 </div>
-            </div>
-            <div class="col-md-4 mb-40 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
-                <div class="item bg-6">
-                    <div class="con">
-                        <div class="numb">02</div>
-                        <h5>Portrait Photography</h5>
-                        <p>Avoid baggy clothing and coats. Single piece dresses are OK. Tighter clothing have better results.</p>
-                    </div>
+                <div class="position-re o-hidden"> <img src="../../../../assets/images/upload/1.png" alt=""> </div>
+                <div class="para text-center pt-3">
+                  <p>Zoom out to show majority of body, facing straight. Use a high resolution photo that has been resized to at least 1024px width.</p>
                 </div>
+              </div>
             </div>
-            <div class="col-md-4 mb-40 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
-                <div class="item bg-5">
-                    <div class="con">
-                        <div class="numb">03</div>
-                        <h5>Travel Photography</h5>
-                        <p>Good contrast between skin and clothing colors. Hair not blocking too much of body.</p>
-                    </div>
+            <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+              <div class="item">
+                <div class="numb text-center">
+                  <span class="category">
+                    <a [routerLink]="'/pages/history'">02</a>
+                  </span>
                 </div>
+                <div class="position-re o-hidden"> <img src="../../../../assets/images/upload/2.png" alt=""> </div>
+                <div class="para text-center pt-3">
+                  <p>Avoid baggy clothing and coats. Single piece dresses are OK. Tighter clothing have better results.</p>
+                </div>
+              </div>
             </div>
+            <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+              <div class="item">
+                <div class="numb text-center">
+                  <span class="category">
+                    <a [routerLink]="'/pages/history'">03</a>
+                  </span>
+                </div>
+                <div class="position-re o-hidden"> <img src="../../../../assets/images/upload/3.png" alt=""> </div>
+                <div class="para text-center pt-3">
+                  <p>Good contrast between skin and clothing colors. Hair not blocking too much of body.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <!-- <div class="col-md-4 mb-40 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <div class="item bg-4">
                     <div class="con">
@@ -64,6 +78,7 @@
             <!-- <div class="section-button col-md-12 text-center mt-5 mb-40">
               <button class="upload-btn" mat-button (click)="upload()"><i class="fas fa-cloud-upload pr-2"></i> Upload your image</button>
             </div> -->
+
             <div class="col-md-12 text-center mt-5 mb-40">
               <button class="upload-btn" mat-button (click)="openUploadDialog()">
                 <i class="fas fa-cloud-upload pr-2"></i> Upload your image

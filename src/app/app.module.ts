@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './modules/material.module';
 import { JwtInterceptor } from './shared/guard/httpInterceptor';
 import { ErrorInterceptor } from './shared/guard/ErrorInterceptor';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ErrorInterceptor } from './shared/guard/ErrorInterceptor';
       useClass: ErrorInterceptor,
       multi: true,
     },
+    AuthService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

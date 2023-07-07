@@ -58,6 +58,7 @@
   height: 600px;
   align-items: center;
   display: flex;
+  border: 1px solid #363636;
 }
 .services .item:before {
   /* content: ""; */
@@ -149,4 +150,111 @@
 .image-popup img {
   max-width: 80%;
   max-height: 80%;
+}
+
+/* history modal */
+.projects .item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.o-hidden {
+  overflow: hidden;
+  border: 1px solid #363636;
+}
+.projects .item img {
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  -webkit-filter: brightness(100%);
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.projects .item .con {
+  padding: 30px;
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  text-align: center;
+}
+.projects .item .con .category {
+  color: #9c5451;
+  font-size: 20px;
+  /* font-family: 'Oswald', sans-serif; */
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+}
+span, a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+.projects .item .con .category a:last-child {
+  margin-right: 0;
+}
+.projects .item .con .category a {
+  margin-right: 5px;
+  position: relative;
+  font-size: 35px;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  opacity: .9;
+}
+.projects .item .con h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: none;
+  font-weight: 400;
+}
+.projects .item .con h5 a {
+  color: #fff;
+}
+.projects .item .con a {
+  color: #fff;
+}
+.projects .item .con i {
+  color: #9c5451;
+  font-size: 20px;
+}
+.projects .item:hover .con {
+  bottom: 0;
+}
+.projects .item:hover img {
+  -webkit-filter: none;
+  filter: none;
+  -webkit-transform: scale(1.09, 1.09);
+  transform: scale(1.09, 1.09);
+  -webkit-filter: brightness(40%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.projects .item .numb span a {
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  /* font-family: 'Oswald', sans-serif; */
+  color: transparent;
+  -webkit-text-stroke: 1px #9c5451;
+  opacity: .9;
+  margin-bottom: 20px;
+}
+.projects .item .para p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: none;
+  font-weight: 400;
 }

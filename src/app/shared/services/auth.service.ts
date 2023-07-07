@@ -21,14 +21,15 @@ export class AuthService {
         this.userId = user._id;
         this.userRole = user.role;
         this.userEmail = user.email;
-       
+
       }
      }
 
   logOut() {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('Token');
-    this.router.navigate(['/auth/login']);
+    this.userRole = null; // Set userRole to null upon logout
+    this.router.navigate(['/pages/home']);
   }
 
 }

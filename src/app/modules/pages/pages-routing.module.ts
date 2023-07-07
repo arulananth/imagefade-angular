@@ -7,6 +7,7 @@ import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { BuyPlanResolver } from '../../shared/services/buyplan.resolver';
+import { TransactionComponent } from './transaction/transaction.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
       path: 'profile',
       component: ProfileComponent,
       data: { title: 'Profile' }
+    },
+    {
+      path: 'transaction',
+      component: TransactionComponent,
+      data: { title: 'Transaction' }
     }
   ]}
 ];

@@ -3,3 +3,12 @@
   font-weight: 600;
   color: #9c5451;
 }
+.zoom-control {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.zoom-control label {
+  margin-right: 10px;
+}

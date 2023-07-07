@@ -47,7 +47,7 @@ export class PricingPlanComponent implements OnInit {
     });
   }
   openTransaction(){
-
+    this.route.navigate(['pages/transaction']);
   }
 
 }
