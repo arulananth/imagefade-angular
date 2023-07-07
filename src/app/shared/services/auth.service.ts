@@ -21,6 +21,7 @@ export class AuthService {
         this.userId = user._id;
         this.userRole = user.role;
         this.userEmail = user.email;
+       
       }
      }
 

@@ -15,30 +15,44 @@
                     <p class="pay-title">Amount</p>
                     <h1>{{priceData.price | currency:'USD':true }}</h1>
                   </div>
-                  <div class="amount-bit pb-3">
+                  <div class="row">
+                  <div class="amount-bit col-sm-6 pb-3">
                     <p class="pay-title">BTC</p>
                     <h1>{{btcPrice  | number:'1.0-7'  }}</h1>
                   </div>
-                  <div class="amount-bit pb-3">
+                  <div class="amount-bit col-sm-6 pb-3">
                     <p class="pay-title">ETH</p>
                     <h1>{{ethPrice |number:'1.0-7' }}</h1>
                   </div>
+                  </div>
                   <div class="pay-input amount-bit pb-3 pt-3">
                     <p class="pay-title">Address</p>
+                    <span>Please deposit the payment follow the address and submit the payment request</span>
                     <div class="input-container">
                       <i class="fa-brands fa-bitcoin icon"></i>
-                      <input type="text" class="input-styles" formControlName="address">
+                      <input type="text" readonly="true" class="input-styles" formControlName="address">
                     </div>
                   </div>
                   <div class="pay-input pt-3">
-                    <p class="pay-title">Payment Link</p>
+                    <p class="pay-title">Blockchain</p>
                     <div class="input-container">
                       <i class="fa-brands fa-bitcoin icon"></i>
-                      <input type="text" class="input-styles" formControlName="link">
+                      <select type="text" class="input-styles" formControlName="blockchain">
+                        <option value="ethereum">ETH</option>
+                        <option value="bitcoin">BTC</option>
+                      </select>
                     </div>
                   </div>
+                  <div class="pay-input pt-3">
+                    <p class="pay-title">Transaction ID</p>
+                    <div class="input-container">
+                      <i class="fa-brands fa-bitcoin icon"></i>
+                      <input type="text"  class="input-styles" formControlName="transactionId">
+                    </div>
+                    <mat-error *ngIf="hasError('transactionId', 'required')">Please enter transaction Id.</mat-error>
+                  </div>
                   <div class="pt-4">
-                    <button type="button" mat-raised-button class="login-btn" (click)="payment()">Payment</button>
+                    <button type="button" mat-raised-button class="login-btn" (click)="payment()">Verify the payment</button>
                   </div>
                 </div>
               </form>
