@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -46,16 +46,37 @@ export class BuyPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.paymenyForm = this.formBuilder.group({
-      address: [this.walletAddress],
-      link: ['']
+      address: [this.walletAddress,Validators.required],
+      blockchain: ['ethereum',Validators.required],
+      transactionId: ['',Validators.required]
     });
   }
 
   payment() {
-    this.paymenyForm.addControl('plan_id', new FormControl(this.priceData._id));
-    this.paymenyForm.addControl('user_id', new FormControl(this.auth.userId));
-    this.apiService.post('/users/subscription-start',this.paymenyForm.value).subscribe(
+    if (this.paymenyForm.invalid) {
+      return;
+    }
+    let network='goerli';
+    let price = this.ethPrice;
+    if(this.paymenyForm.value.blockchain=="bitcoin")
+    {
+      network="testnet";
+      price = this.btcPrice;
+    }
+    let paymentForm = this.paymenyForm.value;
+    paymentForm.coinPrice = price;
+    paymentForm.network = network;
+    paymentForm.plan_id = this.priceData._id
+    paymentForm.user_id = this.auth.userId;
+    paymentForm.title = this.priceData.title;
+    paymentForm.description = this.priceData.description;
+    paymentForm.price = this.priceData.price;
+    paymentForm.fileCount = this.priceData.fileCount;
+    paymentForm.status = "0";
+    paymentForm.validDays = this.priceData.validDays;
+    this.apiService.post('/users/subscription-start',paymentForm).subscribe(
       (response: any) => {
         console.log('response',response);
       },
@@ -64,6 +85,9 @@ export class BuyPlanComponent implements OnInit {
         this.toastr.error(err.message.errorMessage);
       }
     );
+  }
+  public hasError = (controlName: string, errorName: string) => {
+    return this.paymenyForm.controls[controlName].hasError(errorName);
   }
 
 }

@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit{
         console.log('response',response);
         if(response && response.res){
           this.toastr.success('Login Successfully...');
-          localStorage.setItem('Token', JSON.stringify(response.res));
+          localStorage.setItem('Token', JSON.stringify(response.res.token));
+          localStorage.setItem('currentUser', JSON.stringify(response.res.user));
           setTimeout(() => {
             this.router.navigate(['/pages/home']);
           }, 1500);
