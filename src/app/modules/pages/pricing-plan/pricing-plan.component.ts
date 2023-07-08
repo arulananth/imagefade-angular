@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BuyPlanComponent } from '../buy-plan/buy-plan.component';
-
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'app-pricing-plan',
   templateUrl: './pricing-plan.component.html',
@@ -13,14 +13,15 @@ import { BuyPlanComponent } from '../buy-plan/buy-plan.component';
 export class PricingPlanComponent implements OnInit {
 
   priceList: any = [];
-
+  userId:string;
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
     private route: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public userAuth: AuthService
   ) {
-
+     this.userId = this.userAuth.userId;
   }
 
   ngOnInit(): void {

@@ -24,7 +24,7 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'/pages/history'" routerLinkActive="active">History</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="userRole">
           <a class="nav-link" [routerLink]="'/pages/profile'" routerLinkActive="active">Profile</a>
         </li>
         <li class="nav-item" *ngIf="!userRole">
