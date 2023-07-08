@@ -46,6 +46,7 @@
 }
 .mat-expansion-panel {
   border-radius: 0px;
+  margin-bottom: 10px !important;
 }
 .mat-expansion-panel-header {
   height: 60px;

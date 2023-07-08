@@ -7,6 +7,8 @@
   padding: 10px 0;
   width: 115px;
   text-align: center;
+  color: #9c5451;
+  text-transform: uppercase;
 }
 .navbar-nav .nav-item > a{
   font-family: 'Outfit',sans-serif;

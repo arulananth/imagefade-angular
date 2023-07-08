@@ -258,3 +258,28 @@ span, a {
   text-transform: none;
   font-weight: 400;
 }
+/* image */
+.upload-btns {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.upload-btns input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.upload-btns label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #9c5451;
+  color: #fff;
+  cursor: pointer;
+}

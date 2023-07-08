@@ -2,39 +2,59 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AddUsersComponent } from './add-users/add-users.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+
 export class UsersComponent implements OnInit {
- displayedColumns: string[] = ['id', 'name', 'progress', 'action'];
+
+  displayedColumns: string[] = ['title', 'fileCount', 'validDays', 'description', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(){
-     const temporaryData = [
-      { id: '1', progress: '80', name: 'gdf',fruit: 'dfh'},
-      { id: '2', progress: '80', name: 'gdf',fruit: 'fghfh'},
-      { id: '3', progress: '40', name: 'gdf',fruit: 'dfh'},
-      { id: '4', progress: '70', name: 'gdf',fruit: 'fghdfh'},
-      { id: '5', progress: '40', name: 'gdf',fruit: 'dfh'},
-      { id: '6', progress: '70', name: 'gdf',fruit: 'fghdfh'},
-      // ...
-    ];
+  tableList: any;
 
-    this.dataSource = new MatTableDataSource(temporaryData);
+  constructor(
+    public dialog: MatDialog,
+    private apiService: ApiService,
+    private toastr: ToastrService,
+    private route: Router,
+    public userAuth: AuthService
+  ){ }
 
+  ngOnInit(): void {
+    this.getTable();
   }
-ngOnInit(): void {
 
-}
- ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  getTable(){
+    this.apiService.get('/pricing').subscribe(
+      (response: any) => {
+        console.log('history',response);
+        this.tableList = response.res;
+        this.dataSource = new MatTableDataSource(this.tableList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
+  }
+
+  ngAfterViewInit() {
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
@@ -45,4 +65,56 @@ ngOnInit(): void {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  addPrice(){
+    const dialogRef = this.dialog.open(AddUsersComponent, {
+      width: '50%',
+      data: { }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log('dialogRef',result);
+      this.getTable();
+      if (result && result.res) {
+        let results = result.res;
+        this.tableList = results;
+      }
+    });
+  }
+
+  editPrice(row: any){
+    console.log('row',row);
+    const dialogRef = this.dialog.open(AddUsersComponent, {
+      width: '50%',
+      data: { data: row }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log('dialogRef',result);
+      this.getTable();
+      if (result && result.res) {
+        let results = result.res;
+        this.tableList = results;
+      }
+    });
+  }
+
+  deletePrice(row: any){
+    var delBtn = confirm(" Do you want to delete ?");
+    if ( delBtn == true ) {
+      this.apiService.delete('/pricing/'+row._id).subscribe(
+        (response: any) => {
+          console.log('pricing save',response);
+          this.toastr.success('pricing delete successfully... ');
+          this.getTable();
+        },
+        (err: any) => {
+          console.log('err',err);
+          this.toastr.error('Something went wrong... ');
+        }
+      );
+    }
+
+  }
+
 }

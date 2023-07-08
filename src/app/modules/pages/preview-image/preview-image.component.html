@@ -6,15 +6,38 @@
           <h2 class="upload-image">Upload Image</h2>
           <span class="mat-close-x" [mat-dialog-close]="false" cdkFocusInitial><i class="fa-regular fa-circle-xmark"></i></span>
         </div>
-        <input #Image type="file" (change)="handleFileInput($event.target)" class="pb-3"/>
-        <div class="w-100" style="overflow: hidden;">
-          <img width="100%" *ngIf="imageUrl" [src]="imageUrl" [style.transform]="'scale(' + zoom + ')'" class="image" style="overflow: hidden;" />
+        <div class="w-100" *ngIf="!showLoader && remainingTime <= 0">
+          <div class="w-100" style="overflow: hidden;">
+            <img [src]="data" alt="Preview Image" [style.transform]="'scale(' + zoom + ')'" class="image" style="overflow: hidden;" />
+          </div>
+          <div class="zoom-control" *ngIf="data">
+            <label for="zoom-range">Zoom:</label>
+            <input type="range" id="zoom-range" [(ngModel)]="zoom" min="1" max="3" step="0.1" />
+          </div>
         </div>
-        <div class="zoom-control" *ngIf="imageUrl">
+        <div *ngIf="showLoader || remainingTime > 0" class="text-center py-4">
+          <h3 *ngIf="remainingTime > 0">Please wait for: {{ remainingTime }} seconds to view the Image</h3>
+          <mat-spinner *ngIf="showLoader" class="m-auto"></mat-spinner>
+        </div>
+
+        <!-- <input *ngIf="!showImage" #Image type="file" (change)="handleFileInput($event.target)" class="pb-3" />
+        <div class="w-100" style="overflow: hidden;" *ngIf="showImage">
+          <img width="100%" *ngIf="imageUrl" [src]="imageUrl" [style.transform]="'scale(' + zoom + ')'" class="image" style="overflow: hidden;" />
+          <img [src]="data" alt="Preview Image" [style.transform]="'scale(' + zoom + ')'" class="image" style="overflow: hidden;" />
+        </div>
+        <div *ngIf="showLoader" class="text-center py-4">
+          <h3>Please wait for: {{ remainingTime }} seconds to view the Image</h3>
+          <mat-spinner class="m-auto"></mat-spinner>
+        </div>
+        <div class="zoom-control" *ngIf="showImage && imageUrl">
           <label for="zoom-range">Zoom:</label>
           <input type="range" id="zoom-range" [(ngModel)]="zoom" min="1" max="3" step="0.1" />
-        </div>
+        </div> -->
+
       </div>
     </section>
   </div>
 </div>
+
+
+

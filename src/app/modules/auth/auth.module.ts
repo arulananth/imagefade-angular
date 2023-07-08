@@ -9,6 +9,8 @@ import { MaterialModule } from '../material.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ErrorComponent } from './error/error.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ErrorComponent } from './error/error.component';
     RegisterComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ErrorComponent
+    ErrorComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
