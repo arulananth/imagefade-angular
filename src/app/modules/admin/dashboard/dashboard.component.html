@@ -3,12 +3,78 @@
   <div id="main-content">
     <section class="projects pt-130 mb-60">
       <div class="container">
-        <div class="row mb-3">
-          <div class="header">
-            <h5>Pricing</h5>
+        <div class="row mt-3 mb-5">
+          <div class="col-12 card-section">
+              <div class="">
+                  <div class="body">
+                      <div class="row">
+                          <div class="col-lg-3 col-md-6">
+                              <div class="dash-body" style="background: #222222;">
+                                  <div class="body p-3">
+                                      <div class="row text-white align-items-center">
+                                          <div class="col-md-6 text-center border-right">
+                                              <p translate>User <br> Count</p>
+                                          </div>
+                                          <div class="col-md-6 text-center">
+                                              <h4>{{dashboardList?.usersCount || 0}}</h4>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                              <div class="dash-body" style="background: #222222;">
+                                  <div class="body p-3">
+                                      <div class="row text-white align-items-center">
+                                          <div class="col-md-6 text-center border-right">
+                                              <p translate>Upload <br> Count</p>
+                                          </div>
+                                          <div class="col-md-6 text-center">
+                                              <h4 >{{dashboardList?.uploadCount || 0}}</h4>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6">
+                            <div class="dash-body" style="background: #222222;">
+                                <div class="body p-3">
+                                    <div class="row text-white align-items-center">
+                                        <div class="col-md-6 text-center border-right">
+                                            <p translate>subscription <br> Count</p>
+                                        </div>
+                                        <div class="col-md-6 text-center">
+                                            <h4 >{{dashboardList?.subscriptionCount || 0}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                          <div class="dash-body" style="background: #222222;">
+                              <div class="body p-3">
+                                  <div class="row text-white align-items-center">
+                                      <div class="col-md-6 text-center border-right">
+                                          <p translate>subscription <br> Total</p>
+                                      </div>
+                                      <div class="col-md-6 text-center">
+                                          <h4 >{{dashboardList?.subscriptionTotal[0]?.sum || 0}}</h4>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
+      </div>
 
+      <div class="row mb-3">
+        <div class="header">
+          <h5>Pricing</h5>
+        </div>
+      </div>
         <div class="row mb-5">
           <div class="col-md-12">
             <div class="mat-elevation-z8">

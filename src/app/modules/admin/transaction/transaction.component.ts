@@ -1,7 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-transaction',
@@ -10,32 +15,44 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class TransactionComponent implements OnInit{
 
-displayedColumns: string[] = ['id', 'name', 'progress', 'action'];
+  displayedColumns: string[] = ['Title', 'Network', 'Block Chain', 'Coin Price', 'Price', 'Description', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(){
-     const temporaryData = [
-      { id: '1', progress: '80', name: 'gdf',fruit: 'dfh'},
-      { id: '2', progress: '80', name: 'gdf',fruit: 'fghfh'},
-      { id: '3', progress: '40', name: 'gdf',fruit: 'dfh'},
-      { id: '4', progress: '70', name: 'gdf',fruit: 'fghdfh'},
-      { id: '5', progress: '40', name: 'gdf',fruit: 'dfh'},
-      { id: '6', progress: '70', name: 'gdf',fruit: 'fghdfh'},
-      // ...
-    ];
+  tableList: any;
 
-    this.dataSource = new MatTableDataSource(temporaryData);
+  constructor(
+    private apiService: ApiService,
+    private toastr: ToastrService,
+    private route: Router,
+    public dialog: MatDialog,
+    public userAuth: AuthService
+  ){ }
 
+  ngOnInit(): void {
+    this.getTable();
   }
-ngOnInit(): void {
 
-}
- ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  getTable(){
+    this.apiService.post('/admin/subscription-list',{}).subscribe(
+      (response: any) => {
+        console.log('transaction',response);
+        this.tableList = response.res;
+        this.dataSource = new MatTableDataSource(this.tableList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
+  }
+
+  ngAfterViewInit() {
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

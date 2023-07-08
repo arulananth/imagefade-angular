@@ -10,6 +10,9 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddUsersComponent } from './users/add-users/add-users.component';
+import { AddTransactionComponent } from './transaction/add-transaction/add-transaction.component';
+import { AddHistoryComponent } from './history/add-history/add-history.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UsersComponent,
     TransactionComponent,
     HistoryComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddUsersComponent,
+    AddTransactionComponent,
+    AddHistoryComponent
   ],
   imports: [
     CommonModule,

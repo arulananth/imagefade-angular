@@ -4,3 +4,25 @@
 .mb-60 {
   margin-bottom: 60px;
 }
+.upload-btn{
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  line-height: 1.75em;
+  -webkit-transition: background-color .15s ease-out;
+  transition: background-color .15s ease-out;
+  border: none;
+  color: #fff !important;
+  background: #9c5451;
+  padding: 10px 27px;
+  position: relative;
+  overflow: hidden;
+  height: 46px;
+  border-radius: 0px;
+}
+.action-pointer{
+  cursor: pointer;
+}

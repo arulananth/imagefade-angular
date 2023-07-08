@@ -13,25 +13,59 @@ export class PreviewImageComponent implements OnInit {
   imageUrl: any;
 
   zoom: number = 1;
+  // showLoader: boolean = false;
+  showImage: boolean = false;
+  remainingTime: number = 30;
+
+
+  showLoader: boolean = true;
 
   constructor(
     public dialogRef: MatDialogRef<PreviewImageComponent,{ response?: true | false }>,
-    @Inject(MAT_DIALOG_DATA) public data: { selectedImage: string | undefined }
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
-
+    this.startTimer();
   }
 
-  handleFileInput(input: any): void {
-    if (input.files && input.files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.imageUrl = event.target.result;
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
+  startTimer(): void {
+    const timer = setInterval(() => {
+      this.remainingTime--;
+
+      if (this.remainingTime <= 0) {
+        clearInterval(timer);
+        this.showLoader = false;
+      }
+    }, 1000);
   }
+
+  // startTimer(): void {
+  //   const timer = setInterval(() => {
+  //     this.remainingTime--;
+
+  //     if (this.remainingTime <= 0) {
+  //       clearInterval(timer);
+  //     }
+  //   }, 1000);
+  // }
+
+  // handleFileInput(input: any): void {
+  //   if (input.files && input.files.length > 0) {
+  //     this.showLoader = true;
+  //     this.startTimer();
+
+  //     const reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       setTimeout(() => {
+  //         this.showLoader = false;
+  //         this.showImage = true;
+  //         this.imageUrl = event.target.result;
+  //       }, 30000);
+  //     };
+  //     reader.readAsDataURL(input.files[0]);
+  //   }
+  // }
 
   // handleFileInputs(input:any): void {
   //   if (input && input.files && input.files.length > 0) {

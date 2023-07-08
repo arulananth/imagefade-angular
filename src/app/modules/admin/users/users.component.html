@@ -4,70 +4,54 @@
     <section class="projects pt-130 mb-60">
       <div class="container">
         <div class="row mb-3">
-          <div class="header">
-            <h5>Pricing</h5>
+          <div class="col-md-12">
+            <div class="header d-flex justify-content-between align-items-center w--100">
+              <h5>Pricing</h5>
+              <button class="upload-btn" mat-button (click)="addPrice()"><i class="fa-solid fa-plus pr-1"></i> Add</button>
+            </div>
           </div>
         </div>
 
         <div class="row mb-5">
           <div class="col-md-12">
             <div class="mat-elevation-z8">
-              <table
-                mat-table
-                [dataSource]="dataSource"
-                matSort
-                class="dark-theme"
-              >
-                <!-- ID Column -->
-                <ng-container matColumnDef="id">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-                  <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+              <table mat-table [dataSource]="dataSource" matSort class="dark-theme" >
+
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+                  <td mat-cell *matCellDef="let row">{{ row?.title ? row.title : '-' }}</td>
                 </ng-container>
 
-                <!-- Progress Column -->
-                <ng-container matColumnDef="progress">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Progress
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.progress }}%</td>
+                <ng-container matColumnDef="fileCount">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>File Count</th>
+                  <td mat-cell *matCellDef="let row">{{ row?.fileCount ? row.fileCount : '-' }}</td>
                 </ng-container>
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Name
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+                <ng-container matColumnDef="validDays">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid Days</th>
+                  <td mat-cell *matCellDef="let row">{{ row?.validDays ? row.validDays : '-' }}</td>
                 </ng-container>
 
-                <!-- Fruit Column -->
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+                  <td mat-cell *matCellDef="let row">{{ row?.description ? row.description : '-' }}</td>
+                </ng-container>
+
                 <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Fruit
-                  </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                   <td mat-cell *matCellDef="let row">
-                    <span><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span class="action-pointer"><i class="fa-solid fa-pen-to-square pr-2" (click)="editPrice(row)"></i></span>
+                    <span class="action-pointer"><i class="fa-solid fa-trash-can" (click)="deletePrice(row)"></i></span>
                   </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                  mat-row
-                  *matRowDef="let row; columns: displayedColumns"
-                ></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns" ></tr>
 
-                <!-- Row shown when there is no matching data. -->
-                <tr class="mat-row" *matNoDataRow>
-                  <td class="mat-cell" colspan="4">
-                    No data matching the filter "input.value"
-                  </td>
-                </tr>
               </table>
 
-              <mat-paginator
-                [pageSizeOptions]="[5, 10, 25, 100]"
-                aria-label="Select page of users"
-              ></mat-paginator>
+              <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]" aria-label="Select page of users" ></mat-paginator>
+
             </div>
           </div>
         </div>

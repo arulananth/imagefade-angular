@@ -7,7 +7,17 @@
             <div class="section-head col-md-12 text-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <h4>Uploads</h4>
             </div>
-            <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+            <div class="col-md-12 text-center mt-3 mb-5">
+              <div class="upload-btns" *ngIf="showButton">
+                <input type="file" id="image-upload" accept="image/*" (change)="handleFileInputChange($event)">
+                <label for="image-upload" class="mb-0">Upload your image</label>
+              </div>
+              <div class="" *ngIf="!showButton">
+                <h3>Please wait for: {{ remainingTime }} seconds</h3>
+              </div>
+            </div>
+
+            <div class="col-md-4 animate-box fadeInUp animated mb-40" data-animate-effect="fadeInUp">
               <div class="item">
                 <div class="numb text-center">
                   <span class="category">
@@ -79,19 +89,20 @@
               <button class="upload-btn" mat-button (click)="upload()"><i class="fas fa-cloud-upload pr-2"></i> Upload your image</button>
             </div> -->
 
-            <!-- <div class="col-md-12 text-center mt-5 mb-40">
-              <button class="upload-btn" mat-button (click)="openUploadDialog()">
-                <i class="fas fa-cloud-upload pr-2"></i> Upload your image
-              </button>
-            </div> -->
-            <div class="col-md-12 text-center mt-5 mb-40">
+            <!-- <div class="col-md-12 text-center mt-3 mb-5">
               <button class="upload-btn" mat-button (click)="openUploadDialog()" *ngIf="showButton">
                 <i class="fas fa-cloud-upload pr-2"></i> Upload your image
               </button>
               <div class="" *ngIf="!showButton">
                 <h3>Please wait for: {{ remainingTime }} seconds</h3>
               </div>
-            </div>
+            </div> -->
+
+            <!-- <div class="col-md-12 text-center mt-5 mb-40">
+              <button class="upload-btn" mat-button (click)="openUploadDialog()">
+                <i class="fas fa-cloud-upload pr-2"></i> Upload your image
+              </button>
+            </div> -->
 
          </div>
       </div>

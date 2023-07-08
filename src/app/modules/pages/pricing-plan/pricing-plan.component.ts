@@ -40,6 +40,18 @@ export class PricingPlanComponent implements OnInit {
     );
   }
 
+  getMerchant(){
+    this.apiService.get('/users/user-machine-id').subscribe(
+      (response: any) => {
+        console.log('response',response);
+        this.priceList = response.res;
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
+  }
+
   buyPlanDialog(price: any){
     // this.route.navigate(['pages/pricing/' + price._id]);
     this.dialog.open(BuyPlanComponent, {

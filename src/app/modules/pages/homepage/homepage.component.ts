@@ -38,17 +38,28 @@ export class HomepageComponent implements OnInit {
     }, 1000);
   }
 
-  openUploadDialog(): void {
-    const dialogRef = this.dialog.open(PreviewImageComponent, {
-      width: '500px',
-      data: { selectedImage: this.selectedImage }
-    });
+  handleFileInputChange(event: any) {
+    const file = event.target.files[0];
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      // if (result) {
-      //   this.selectedImage = result;
-      // }
-    });
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const dialogRef = this.dialog.open(PreviewImageComponent, {
+        width: '40%',
+        data: reader.result
+      });
+    };
   }
+
+  // openUploadDialog(): void {
+  //   const dialogRef = this.dialog.open(PreviewImageComponent, {
+  //     width: '50%',
+  //     data: { selectedImage: this.selectedImage }
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result: any) => { });
+  // }
+
 
 }
