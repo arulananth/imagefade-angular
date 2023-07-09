@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-preview-image',
   templateUrl: './preview-image.component.html',
@@ -15,18 +15,25 @@ export class PreviewImageComponent implements OnInit {
   zoom: number = 1;
   // showLoader: boolean = false;
   showImage: boolean = false;
-  remainingTime: number = 30;
+  remainingTime: number = 3;
 
 
   showLoader: boolean = true;
 
   constructor(
     public dialogRef: MatDialogRef<PreviewImageComponent,{ response?: true | false }>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public httpReq:HttpClient
   ) {}
 
   ngOnInit(): void {
     this.startTimer();
+    let image64:string= this.data.split(',')[1];
+    this.httpReq.post("http://localhost:5000/deepnude",{image:image64}).subscribe((response:any)=>{
+         console.log(response)
+    },error=>{
+         console.log(error)
+    })
   }
 
   startTimer(): void {

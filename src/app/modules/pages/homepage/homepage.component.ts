@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
   userRole: any;
 
   showButton: boolean = false;
-  remainingTime: number = 30;
+  remainingTime: number = 3;
 
   constructor(
     public dialog: MatDialog,
