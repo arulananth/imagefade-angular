@@ -13,6 +13,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddUsersComponent } from './users/add-users/add-users.component';
 import { AddTransactionComponent } from './transaction/add-transaction/add-transaction.component';
 import { AddHistoryComponent } from './history/add-history/add-history.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { AddPricingComponent } from './pricing/add-pricing/add-pricing.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AddHistoryComponent } from './history/add-history/add-history.component
     DashboardComponent,
     AddUsersComponent,
     AddTransactionComponent,
-    AddHistoryComponent
+    AddHistoryComponent,
+    PricingComponent,
+    AddPricingComponent
   ],
   imports: [
     CommonModule,

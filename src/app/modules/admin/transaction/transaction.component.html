@@ -4,68 +4,83 @@
     <section class="projects pt-130 mb-60">
       <div class="container">
         <div class="row mb-3">
-          <div class="header">
-            <h5>Transaction</h5>
+          <div class="col-md-12">
+            <div class="header d-flex justify-content-between align-items-center w--100">
+              <h3 class="pricing-title">Transaction</h3>
+            </div>
           </div>
         </div>
 
         <div class="row mb-5">
           <div class="col-md-12">
-            <div class="mat-elevation-z8">
-              <table
-                mat-table
-                [dataSource]="dataSource"
-                matSort
-                class="dark-theme"
-              >
-                <!-- ID Column -->
-                <ng-container matColumnDef="Title">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
-                  <td mat-cell *matCellDef="let row">{{ row.title }}</td>
-                </ng-container>
 
-                <!-- Progress Column -->
-                <ng-container matColumnDef="Network">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Network </th>
-                  <td mat-cell *matCellDef="let row">{{ row.network }}</td>
-                </ng-container>
+            <ng-container >
+              <ng-container *ngIf="tableList?.length > 0; else noRecords">
+                <div class="mat-elevation-z8">
+                  <table mat-table [dataSource]="dataSource" matSort class="dark-theme" >
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="Block Chain">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Block Chain</th>
-                  <td mat-cell *matCellDef="let row">{{ row.blockchain }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="Title">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+                      <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="Coin Price">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Coin Price</th>
-                  <td mat-cell *matCellDef="let row">{{ row.coinPrice }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="Network">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Network </th>
+                      <td mat-cell *matCellDef="let row">{{ row.network }}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="Price">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
-                  <td mat-cell *matCellDef="let row">{{ row.price }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="Block Chain">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Block Chain</th>
+                      <td mat-cell *matCellDef="let row">{{ row.blockchain }}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="Description">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-                  <td mat-cell *matCellDef="let row">{{ row.description }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="Coin Price">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Coin Price</th>
+                      <td mat-cell *matCellDef="let row">{{ row.coinPrice }}</td>
+                    </ng-container>
 
-                <!-- Fruit Column -->
-                <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                  <td mat-cell *matCellDef="let row">
-                    <button mat-stroked-button><b>Verify</b></button>
-                  </td>
-                </ng-container>
+                    <ng-container matColumnDef="Price">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+                      <td mat-cell *matCellDef="let row">{{ row.price }}</td>
+                    </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    <ng-container matColumnDef="Description">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+                      <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+                    </ng-container>
 
-              </table>
+                    <ng-container matColumnDef="status">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                      <td mat-cell *matCellDef="let row">
+                        <span class="badge badge-warning status-pd" *ngIf="row.status == '0'">Pending</span>
+                        <span class="badge badge-success status-pd" *ngIf="row.status == '1'">Success</span>
+                        <span class="badge badge-danger status-pd" *ngIf="row.status == '2'">Cancel</span>
+                      </td>
+                    </ng-container>
 
-              <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]" aria-label="Select page of users" ></mat-paginator>
-            </div>
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                      <td mat-cell *matCellDef="let row">
+                        <button mat-stroked-button *ngIf="row.status == '0'" (click)="checkTransaction(row)"><b>Verify</b></button>
+                        <button mat-stroked-button [disabled]="row.status == '1' || row.status == '2'" *ngIf="row.status == '1' || row.status == '2'"><b>Verified</b></button>
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]" aria-label="Select page of users" ></mat-paginator>
+                </div>
+              </ng-container>
+              <ng-template #noRecords>
+                <div class="col-md-12 text-center py-4">
+                  <h3>There are no items to display!</h3>
+                </div>
+              </ng-template>
+            </ng-container>
+
           </div>
         </div>
       </div>

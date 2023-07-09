@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-preview-image',
   templateUrl: './preview-image.component.html',
@@ -20,19 +22,23 @@ export class PreviewImageComponent implements OnInit {
 
   showLoader: boolean = true;
 
+  imageData: any | null;
+
   constructor(
     public dialogRef: MatDialogRef<PreviewImageComponent,{ response?: true | false }>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public httpReq:HttpClient
+    public httpReq:HttpClient,
+    private apiService: ApiService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.startTimer();
     let image64:string= this.data.split(',')[1];
-    this.httpReq.post("http://localhost:5000/deepnude",{image:image64}).subscribe((response:any)=>{
-         console.log(response)
+    this.apiService.post("/deepnude",{image:image64}).subscribe((response:any)=>{
+      console.log(response)
     },error=>{
-         console.log(error)
+      console.log(error)
     })
   }
 
@@ -53,6 +59,9 @@ export class PreviewImageComponent implements OnInit {
 
   //     if (this.remainingTime <= 0) {
   //       clearInterval(timer);
+  //       this.showLoader = false;
+  //       this.imageData = this.route.snapshot.paramMap.get('imageData');
+  //       console.log('imageData',this.imageData)
   //     }
   //   }, 1000);
   // }

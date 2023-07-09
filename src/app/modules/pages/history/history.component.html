@@ -7,14 +7,36 @@
                 <div class="section-head col-md-12 text-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                     <h4>History</h4>
                 </div>
-                <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+                <ng-container>
+                  <ng-container *ngIf="tableList.length > 0; else noRecords">
+                    <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp" *ngFor="let history of tableList">
+                      <div class="item">
+                          <div class="position-re o-hidden"> <img src="../../../../assets/images/02.jpg" alt=""> </div>
+                          <div class="con"> <span class="category">
+                                  <a [routerLink]="'/pages/history'">{{ history.price }}</a>
+                              </span>
+                              <h5><a [routerLink]="'/pages/history'">{{ history.title }}</a></h5>
+                              <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
+                              <a>{{ history.lastVerify }}</a>
+                          </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-template #noRecords>
+                    <div class="col-md-12 text-center py-4">
+                      <h3>There are no items to display!</h3>
+                    </div>
+                  </ng-template>
+                </ng-container>
+
+                <!-- <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                     <div class="item">
                         <div class="position-re o-hidden"> <img src="../../../../assets/images/02.jpg" alt=""> </div>
                         <div class="con"> <span class="category">
                                 <a [routerLink]="'/pages/history'">01</a>
                             </span>
                             <h5><a [routerLink]="'/pages/history'">Wedding Shoots</a></h5>
-                            <!-- <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a> -->
+                            <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
                             <a>07/07/2023</a>
                         </div>
                     </div>
@@ -26,7 +48,7 @@
                                 <a [routerLink]="'/pages/history'">02</a>
                             </span>
                             <h5><a [routerLink]="'/pages/history'">Portrait Photography</a></h5>
-                            <!-- <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a> -->
+                            <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
                             <a>07/07/2023</a>
                         </div>
                     </div>
@@ -38,7 +60,7 @@
                                 <a [routerLink]="'/pages/history'">03</a>
                             </span>
                             <h5><a [routerLink]="'/pages/history'">Travel Photography</a></h5>
-                            <!-- <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a> -->
+                            <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
                             <a>07/07/2023</a>
                         </div>
                     </div>
@@ -50,7 +72,7 @@
                                 <a [routerLink]="'/pages/history'">04</a>
                             </span>
                             <h5><a [routerLink]="'/pages/history'">Product Photography</a></h5>
-                            <!-- <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a> -->
+                            <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
                             <a>07/07/2023</a>
                         </div>
                     </div>
@@ -62,7 +84,7 @@
                                 <a [routerLink]="'/pages/history'">05</a>
                             </span>
                             <h5><a [routerLink]="'/pages/history'">Fashion Photography</a></h5>
-                            <!-- <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a> -->
+                            <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
                             <a>07/07/2023</a>
                         </div>
                     </div>
@@ -74,11 +96,11 @@
                                 <a [routerLink]="'/pages/history'">06</a>
                             </span>
                             <h5><a [routerLink]="'/pages/history'">Sport Photography</a></h5>
-                            <!-- <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a> -->
+                            <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
                             <a>07/07/2023</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
       </section>

@@ -1,12 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { AlertPaymentComponent } from '../alert/alert-payment/alert-payment.component';
 @Component({
   selector: 'app-buy-plan',
   templateUrl: './buy-plan.component.html',
@@ -28,7 +29,8 @@ export class BuyPlanComponent implements OnInit {
     private route: Router,
     public formBuilder: FormBuilder,
     private auth: AuthService,
-    private http:HttpClient
+    private http:HttpClient,
+    public dialog: MatDialog,
   ) {
     let data=modeldata.price;
     this.priceData = data;
@@ -46,7 +48,7 @@ export class BuyPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.paymenyForm = this.formBuilder.group({
       address: [this.walletAddress,Validators.required],
       blockchain: ['ethereum',Validators.required],
@@ -79,10 +81,22 @@ export class BuyPlanComponent implements OnInit {
     this.apiService.post('/users/subscription-start',paymentForm).subscribe(
       (response: any) => {
         console.log('response',response);
+        if(response && response.res.expireDate){
+          this.dialog.open(AlertPaymentComponent, {
+            width: '35%',
+            data: { data: 'Plan subscribed successfully' }
+          });
+        }else{
+          this.dialog.open(AlertPaymentComponent, {
+            width: '35%',
+            data: { data: response.res.message }
+          });
+        }
+        this.dialogRef.close(response);
       },
       (err: any) => {
         console.log('err',err);
-        this.toastr.error(err.message.errorMessage);
+        this.toastr.error('Something went Wrong...');
       }
     );
   }

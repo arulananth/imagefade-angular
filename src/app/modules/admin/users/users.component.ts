@@ -17,13 +17,13 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 
 export class UsersComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'fileCount', 'validDays', 'description', 'action'];
+  displayedColumns: string[] = ['id', 'email', 'role', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  tableList: any;
+  userList: any;
 
   constructor(
     public dialog: MatDialog,
@@ -34,17 +34,31 @@ export class UsersComponent implements OnInit {
   ){ }
 
   ngOnInit(): void {
-    this.getTable();
+    this.getUser();
   }
 
-  getTable(){
-    this.apiService.get('/pricing').subscribe(
+  getUser(){
+    this.apiService.get('/admin/getAllUsers').subscribe(
       (response: any) => {
-        console.log('history',response);
-        this.tableList = response.res;
-        this.dataSource = new MatTableDataSource(this.tableList);
+        console.log('User',response);
+        this.userList = response.res;
+        this.dataSource = new MatTableDataSource(this.userList);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
+  }
+
+  blockUser(row: any){
+    this.apiService.post('/admin/user-unblock-block',{
+      user_id: row._id
+    }).subscribe(
+      (response: any) => {
+        console.log('block',response);
+        this.toastr.success(response.res.message)
       },
       (err: any) => {
         console.log('err',err);
@@ -66,55 +80,5 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  addPrice(){
-    const dialogRef = this.dialog.open(AddUsersComponent, {
-      width: '50%',
-      data: { }
-    });
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('dialogRef',result);
-      this.getTable();
-      if (result && result.res) {
-        let results = result.res;
-        this.tableList = results;
-      }
-    });
-  }
-
-  editPrice(row: any){
-    console.log('row',row);
-    const dialogRef = this.dialog.open(AddUsersComponent, {
-      width: '50%',
-      data: { data: row }
-    });
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('dialogRef',result);
-      this.getTable();
-      if (result && result.res) {
-        let results = result.res;
-        this.tableList = results;
-      }
-    });
-  }
-
-  deletePrice(row: any){
-    var delBtn = confirm(" Do you want to delete ?");
-    if ( delBtn == true ) {
-      this.apiService.delete('/pricing/'+row._id).subscribe(
-        (response: any) => {
-          console.log('pricing save',response);
-          this.toastr.success('pricing delete successfully... ');
-          this.getTable();
-        },
-        (err: any) => {
-          console.log('err',err);
-          this.toastr.error('Something went wrong... ');
-        }
-      );
-    }
-
-  }
 
 }

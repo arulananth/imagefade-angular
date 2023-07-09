@@ -8,7 +8,7 @@
         </div>
         <div class="w-100" *ngIf="!showLoader && remainingTime <= 0">
           <div class="w-100" style="overflow: hidden;">
-            <img [src]="data" alt="Preview Image" [style.transform]="'scale(' + zoom + ')'" class="image" style="overflow: hidden;" />
+            <img [src]="data" alt="Preview Image" [style.transform]="'scale(' + zoom + ')'" class="image w-auto" style="overflow: hidden;" style="height: 500px;" />
           </div>
           <div class="zoom-control" *ngIf="data">
             <label for="zoom-range">Zoom:</label>
@@ -40,4 +40,19 @@
 </div>
 
 
+<!-- <div class="" style="height: 100vh;">
+  <div class="w-100" >
+    <div class="w-100" style="overflow: hidden;">
+      <img [src]="imageData" alt="Preview Image" [style.transform]="'scale(' + zoom + ')'" class="image w-100" style="overflow: hidden;" />
+    </div>
+    <div class="zoom-control" >
+      <label for="zoom-range">Zoom:</label>
+      <input type="range" id="zoom-range" [(ngModel)]="zoom" min="1" max="3" step="0.1" />
+    </div>
+  </div>
+  <div  class="text-center py-4">
+    <h3 *ngIf="remainingTime > 0">Please wait for: {{ remainingTime }} seconds to view the Image</h3>
+    <mat-spinner *ngIf="showLoader" class="m-auto"></mat-spinner>
+  </div>
+</div> -->
 

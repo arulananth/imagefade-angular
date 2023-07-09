@@ -30,9 +30,9 @@
                     <div class="text-color-head"><label>{{ item.price }}</label></div>
                     <div class="text-color-head"><label>{{item.description}}</label></div>
                   </div>
-                  <div class="row">
+                  <div class="row" *ngIf="item.status == '0'">
                     <div class="col-md-12 text-center mt-3 mb-40">
-                      <button class="upload-btn" mat-button (click)="Transaction()">Transaction</button>
+                      <button class="upload-btn" mat-button (click)="Transaction()">Check Transaction</button>
                     </div>
                   </div>
                 </div>

@@ -14,6 +14,8 @@ export class PricingPlanComponent implements OnInit {
 
   priceList: any = [];
   userId:string;
+  userRole: any;
+
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
@@ -21,7 +23,8 @@ export class PricingPlanComponent implements OnInit {
     public dialog: MatDialog,
     public userAuth: AuthService
   ) {
-     this.userId = this.userAuth.userId;
+      this.userId = this.userAuth.userId;
+      this.userRole = this.userAuth.userRole;
   }
 
   ngOnInit(): void {

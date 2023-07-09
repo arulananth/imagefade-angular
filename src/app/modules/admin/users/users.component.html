@@ -6,53 +6,55 @@
         <div class="row mb-3">
           <div class="col-md-12">
             <div class="header d-flex justify-content-between align-items-center w--100">
-              <h5>Pricing</h5>
-              <button class="upload-btn" mat-button (click)="addPrice()"><i class="fa-solid fa-plus pr-1"></i> Add</button>
+              <h3 class="pricing-title">Pricing</h3>
             </div>
           </div>
         </div>
 
         <div class="row mb-5">
           <div class="col-md-12">
-            <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="dataSource" matSort class="dark-theme" >
+            <ng-container >
+              <ng-container *ngIf="userList?.length > 0; else noRecords">
+                <div class="mat-elevation-z8">
+                  <table mat-table [dataSource]="dataSource" matSort class="dark-theme" >
 
-                <ng-container matColumnDef="title">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
-                  <td mat-cell *matCellDef="let row">{{ row?.title ? row.title : '-' }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                      <td mat-cell *matCellDef="let row; let i = index;">{{ i + 1 }}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="fileCount">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>File Count</th>
-                  <td mat-cell *matCellDef="let row">{{ row?.fileCount ? row.fileCount : '-' }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="email">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                      <td mat-cell *matCellDef="let row">{{ row?.email ? row.email : '-' }}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="validDays">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid Days</th>
-                  <td mat-cell *matCellDef="let row">{{ row?.validDays ? row.validDays : '-' }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="role">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+                      <td mat-cell *matCellDef="let row">{{ row?.role ? row.role : '-' }}</td>
+                    </ng-container>
 
-                <ng-container matColumnDef="description">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-                  <td mat-cell *matCellDef="let row">{{ row?.description ? row.description : '-' }}</td>
-                </ng-container>
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                      <td mat-cell *matCellDef="let row">
+                        <button mat-stroked-button (click)="blockUser(row)"><b>Block</b></button>
+                      </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-                  <td mat-cell *matCellDef="let row">
-                    <span class="action-pointer"><i class="fa-solid fa-pen-to-square pr-2" (click)="editPrice(row)"></i></span>
-                    <span class="action-pointer"><i class="fa-solid fa-trash-can" (click)="deletePrice(row)"></i></span>
-                  </td>
-                </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns" ></tr>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns" ></tr>
+                  </table>
 
-              </table>
+                  <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]" aria-label="Select page of users" ></mat-paginator>
 
-              <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]" aria-label="Select page of users" ></mat-paginator>
-
-            </div>
+                </div>
+              </ng-container>
+              <ng-template #noRecords>
+                <div class="col-md-12 text-center py-4">
+                  <h3>There are no items to display!</h3>
+                </div>
+              </ng-template>
+            </ng-container>
           </div>
         </div>
       </div>
