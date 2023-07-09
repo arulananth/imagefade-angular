@@ -7,7 +7,8 @@
             <div class="section-head col-md-12 text-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <h4>Uploads</h4>
             </div>
-            <div class="col-md-12 text-center mt-3 mb-5">
+            <!-- *ngIf="showMachine?.subscriptionId" -->
+            <div class="col-md-12 text-center mt-3 mb-5" >
               <div class="upload-btns" *ngIf="showButton">
                 <input type="file" id="image-upload" accept="image/*" (change)="handleFileInputChange($event)">
                 <label for="image-upload" class="mb-0">Upload your image</label>
@@ -21,7 +22,7 @@
               <div class="item">
                 <div class="numb text-center">
                   <span class="category">
-                    <a [routerLink]="'/pages/history'">01</a>
+                    <a>01</a>
                   </span>
                 </div>
                 <div class="position-re o-hidden"> <img src="../../../../assets/images/upload/1.png" alt=""> </div>

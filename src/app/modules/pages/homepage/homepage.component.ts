@@ -18,6 +18,8 @@ export class HomepageComponent implements OnInit {
   showButton: boolean = false;
   remainingTime: number = 3;
 
+  showMachine: any;
+
   constructor(
     public dialog: MatDialog,
     private authService: AuthService,
@@ -28,7 +30,37 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.userRole){
+      this.userMe();
+    }
+    else if(!this.userRole){
+      this.machineId();
+    }
     this.startTimer();
+  }
+
+  machineId(){
+    this.apiService.get('/users/user-machine-id').subscribe(
+      (response: any) => {
+        console.log('merchant-id',response);
+        this.showMachine = response.res;
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
+  }
+
+  userMe(){
+    this.apiService.get('/users/me').subscribe(
+      (response: any) => {
+        console.log('userMe',response);
+        this.showMachine = response.res;
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
   }
 
   startTimer(): void {
