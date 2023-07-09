@@ -8,10 +8,13 @@
                 <h4>Uploads</h4>
             </div>
             <!-- *ngIf="showMachine?.subscriptionId" -->
-            <div class="col-md-12 text-center mt-3 mb-5" >
-              <div class="upload-btns" *ngIf="showButton">
+            <div class="col-md-12 text-center mt-3 mb-5" *ngIf="showImageOptions">
+              <div class="upload-btns" *ngIf="showButton && todayCount==0">
                 <input type="file" id="image-upload" accept="image/*" (change)="handleFileInputChange($event)">
                 <label for="image-upload" class="mb-0">Upload your image</label>
+              </div>
+              <div class="upload-btns" *ngIf="showButton && todayCount>0">
+                <h3>Please subscribe the plan</h3>
               </div>
               <div class="" *ngIf="!showButton">
                 <h3>Please wait for: {{ remainingTime }} seconds</h3>

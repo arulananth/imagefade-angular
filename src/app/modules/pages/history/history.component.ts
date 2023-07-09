@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
@@ -15,9 +15,9 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HistoryComponent implements OnInit {
 
-  tableList: any;
+  tableList: any=[];
   userRole: any;
-
+  fileUrl:any;
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
@@ -26,6 +26,7 @@ export class HistoryComponent implements OnInit {
     public userAuth: AuthService
   ) {
     this.userRole = this.userAuth.userRole;
+    this.fileUrl = environment.BACKEND_BASE_URL;
   }
 
   ngOnInit(): void {

@@ -56,11 +56,18 @@ export class PricingPlanComponent implements OnInit {
   }
 
   buyPlanDialog(price: any){
+    if(this.userId)
+    {
     // this.route.navigate(['pages/pricing/' + price._id]);
     this.dialog.open(BuyPlanComponent, {
       width: '40%',
       data: { price: price }
     });
+    }
+    else 
+    {
+      this.route.navigate(["auth/login"])
+    }
   }
   openTransaction(){
     this.route.navigate(['pages/transaction']);

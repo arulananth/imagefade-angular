@@ -11,13 +11,12 @@
                   <ng-container *ngIf="tableList.length > 0; else noRecords">
                     <div class="col-md-4 animate-box fadeInUp animated" data-animate-effect="fadeInUp" *ngFor="let history of tableList">
                       <div class="item">
-                          <div class="position-re o-hidden"> <img src="../../../../assets/images/02.jpg" alt=""> </div>
+                          <div class="position-re o-hidden"> <img [src]="fileUrl+'/'+history.deepNudeFile" alt=""> </div>
                           <div class="con"> <span class="category">
                                   <a [routerLink]="'/pages/history'">{{ history.price }}</a>
                               </span>
-                              <h5><a [routerLink]="'/pages/history'">{{ history.title }}</a></h5>
-                              <a [routerLink]="'/pages/history'"><i class="fa fa-long-arrow-right"></i></a>
-                              <a>{{ history.lastVerify }}</a>
+                              <h5>{{ history.createdAt|date:'medium' }}</h5>
+                            
                           </div>
                       </div>
                     </div>

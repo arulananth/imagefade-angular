@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'app-preview-image',
   templateUrl: './preview-image.component.html',
@@ -24,22 +25,32 @@ export class PreviewImageComponent implements OnInit {
 
   imageData: any | null;
 
+  user_id:any | null;
+
   constructor(
     public dialogRef: MatDialogRef<PreviewImageComponent,{ response?: true | false }>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public httpReq:HttpClient,
+    public auth:AuthService,
     private apiService: ApiService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    console.log(this.data)
+  }
 
   ngOnInit(): void {
+    this.user_id = this.auth.userId;
     this.startTimer();
-    let image64:string= this.data.split(',')[1];
-    this.apiService.post("/deepnude",{image:image64}).subscribe((response:any)=>{
-      console.log(response)
-    },error=>{
-      console.log(error)
-    })
+    let image64:string= this.data.data.split(',')[1];
+    // this.apiService.post("/upload/withPhoto",{
+    //   content:this.data.data,
+    //   file:this.data.imageBinary,
+    //   user_id:this.user_id
+    // }).subscribe((response:any)=>{
+    //   console.log(response)
+    // },error=>{
+    //   console.log(error)
+    // })
   }
 
   startTimer(): void {

@@ -14,11 +14,15 @@ export class HomepageComponent implements OnInit {
 
   selectedImage: string | undefined;
   userRole: any;
+  userId:any;
 
   showButton: boolean = false;
-  remainingTime: number = 3;
+  remainingTime: number = 30;
+  showImageOptions: boolean = false;
 
   showMachine: any;
+
+  todayCount:number=0;
 
   constructor(
     public dialog: MatDialog,
@@ -26,7 +30,8 @@ export class HomepageComponent implements OnInit {
     private apiService: ApiService,
     private route: Router
   ) {
-    this.userRole = authService.userRole
+    this.userRole = authService.userRole;
+    this.userId = authService.userId;
   }
 
   ngOnInit(): void {
@@ -36,14 +41,20 @@ export class HomepageComponent implements OnInit {
     else if(!this.userRole){
       this.machineId();
     }
-    this.startTimer();
+    
   }
 
   machineId(){
     this.apiService.get('/users/user-machine-id').subscribe(
       (response: any) => {
         console.log('merchant-id',response);
+        this.startTimer();
         this.showMachine = response.res;
+        if(this.showMachine && this.showMachine.todayCount)
+        {
+          this.todayCount = this.showMachine.todayCount;
+        }
+        this.showImageOptions = true;
       },
       (err: any) => {
         console.log('err',err);
@@ -56,6 +67,15 @@ export class HomepageComponent implements OnInit {
       (response: any) => {
         console.log('userMe',response);
         this.showMachine = response.res;
+        if(this.showMachine && this.showMachine.subscriptionId)
+        {
+           let expireDate= this.showMachine.subscriptionId.expireDate;
+           if(new Date(expireDate) > new Date())
+           this.todayCount = 0;
+           this.remainingTime=1;
+           this.startTimer();
+        }
+        this.showImageOptions = true;
       },
       (err: any) => {
         console.log('err',err);
@@ -76,14 +96,24 @@ export class HomepageComponent implements OnInit {
 
   handleFileInputChange(event: any) {
     const file = event.target.files[0];
-
+    let files: FileList = event.target.files;
+    let filer : File = files[0];
+    let formData = new FormData();
+    formData.append("file", filer);
+    formData.append("user_id",this.userId)
+    this.apiService.post("/upload/withPhoto",formData).subscribe((msg:any)=>{
+       console.log(msg)
+    },(error:any)=>{
+      console.log(error)
+    })
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
     reader.onload = () => {
       const dialogRef = this.dialog.open(PreviewImageComponent, {
         width: '50%',
-        data: reader.result
+        data: {data:reader.result}
+        
       });
     };
   }

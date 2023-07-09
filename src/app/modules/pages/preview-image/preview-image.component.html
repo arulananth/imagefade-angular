@@ -8,7 +8,7 @@
         </div>
         <div class="w-100" *ngIf="!showLoader && remainingTime <= 0">
           <div class="w-100" style="overflow: hidden;">
-            <img [src]="data" alt="Preview Image" [style.transform]="'scale(' + zoom + ')'" class="image w-auto" style="overflow: hidden;" style="height: 500px;" />
+            <img [src]="data.data" alt="Preview Image" [style.transform]="'scale(' + zoom + ')'" class="image w-auto" style="overflow: hidden;" style="height: 500px;" />
           </div>
           <div class="zoom-control" *ngIf="data">
             <label for="zoom-range">Zoom:</label>
