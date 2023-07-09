@@ -1,0 +1,50 @@
+<div class="row no-gutters">
+  <div class="col-md-12">
+    <form [formGroup]="priceForm" class="form-divition auth-forms">
+      <div class="dialog-header d-flex justify-content-between align-items-center w-100 p-4">
+        <h2 class="mb-0 buyplan-text">Pricing</h2>
+        <span class="mat-close-x" [mat-dialog-close]="false" cdkFocusInitial><i class="fa-regular fa-circle-xmark"></i></span>
+      </div>
+      <mat-dialog-content class="mat-typography">
+
+          <!-- <div class="form-group ">
+            <p class="lead text-left Login-text">Change Password</p>
+          </div> -->
+          <mat-form-field  class="w-100">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" required autocomplete="off">
+            <mat-error *ngIf="hasError('title', 'required')">Please enter your title.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field  class="w-100">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" formControlName="price" required autocomplete="off">
+            <mat-error *ngIf="hasError('price', 'required')">Please enter the price.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field  class="w-100">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description" required autocomplete="off">
+            <mat-error *ngIf="hasError('description', 'required')">Please enter the description.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field  class="w-100">
+            <mat-label>File Count</mat-label>
+            <input matInput type="number" formControlName="fileCount" required autocomplete="off">
+            <mat-error *ngIf="hasError('fileCount', 'required')">Please enter the fileCount.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field  class="w-100">
+            <mat-label>Valid Days</mat-label>
+            <input matInput type="number" formControlName="validDays" required autocomplete="off">
+            <mat-error *ngIf="hasError('validDays', 'required')">Please enter the valid days.</mat-error>
+          </mat-form-field>
+
+      </mat-dialog-content>
+      <mat-dialog-actions align="end" class="px-4 action-btn-b">
+        <button mat-stroked-button mat-dialog-close class="cancel-btn">Cancel</button>
+        <button class="upload-btn" mat-button (click)="save()">Save</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>

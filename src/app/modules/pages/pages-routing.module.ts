@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { BuyPlanResolver } from '../../shared/services/buyplan.resolver';
 import { TransactionComponent } from './transaction/transaction.component';
+import { PreviewImageComponent } from './preview-image/preview-image.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,11 @@ const routes: Routes = [
       path: 'home',
       component: HomepageComponent,
       data: { title: 'Home Page' }
+    },
+    {
+      path: 'home/imagePreview',
+      component: PreviewImageComponent,
+      data: { title: 'Preview Image' }
     },
     {
       path: 'pricing',

@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit{
- displayedColumns: string[] = ['name', 'progress', 'action'];
+ displayedColumns: string[] = ['name', 'email', 'date', 'image', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

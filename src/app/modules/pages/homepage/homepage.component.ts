@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PreviewImageComponent } from '../preview-image/preview-image.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -18,7 +20,9 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private apiService: ApiService,
+    private route: Router
   ) {
     this.userRole = authService.userRole
   }
@@ -46,11 +50,44 @@ export class HomepageComponent implements OnInit {
 
     reader.onload = () => {
       const dialogRef = this.dialog.open(PreviewImageComponent, {
-        width: '40%',
+        width: '50%',
         data: reader.result
       });
     };
   }
+
+  // handleFileInputChange(event: any) {
+  //   const file = event.target.files[0];
+
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+
+  //   reader.onload = () => {
+  //     const imageData = reader.result as string;
+  //     this.route.navigate(['pages/home/imagePreview', { imageData: imageData }]);
+  //   };
+  // }
+
+  // handleFileInputChange(event: any) {
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => {
+  //     const formData = new FormData();
+  //     formData.append('image', file);
+  //     this.apiService.post<any>("/upload/withPhoto", formData).subscribe(
+  //       (response:any) => {
+  //         const dialogRef = this.dialog.open(PreviewImageComponent, {
+  //           width: '40%',
+  //           data: response.res.filePath
+  //         });
+  //       },
+  //       (error) => {
+  //         console.error(error);
+  //       }
+  //     );
+  //   };
+  // }
 
   // openUploadDialog(): void {
   //   const dialogRef = this.dialog.open(PreviewImageComponent, {

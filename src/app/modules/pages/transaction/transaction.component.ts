@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { VerifyTransactionComponent } from '../alert/verify-transaction/verify-transaction.component';
 
 @Component({
   selector: 'app-transaction',
@@ -45,7 +46,12 @@ export class TransactionComponent implements OnInit {
   }
 
   Transaction(){
+    const dialogRef = this.dialog.open(VerifyTransactionComponent, {
+      width: '35%',
+      data: { data: '' }
+    });
 
+    dialogRef.afterClosed().subscribe((result: any) => { });
   }
 
 }

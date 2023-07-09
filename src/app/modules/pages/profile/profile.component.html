@@ -28,7 +28,7 @@
                 </mat-form-field>
 
                 <mat-form-field  class="w-100">
-                  <mat-label>Password</mat-label>
+                  <mat-label>Confirm Password</mat-label>
                   <input matInput type="password" formControlName="confirmPassword" required [type]="hide1 ? 'password' : 'text'" autocomplete="off">
                   <button type="button" mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
                     <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>

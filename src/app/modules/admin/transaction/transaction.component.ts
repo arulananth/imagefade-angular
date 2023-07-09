@@ -15,13 +15,15 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class TransactionComponent implements OnInit{
 
-  displayedColumns: string[] = ['Title', 'Network', 'Block Chain', 'Coin Price', 'Price', 'Description', 'action'];
+  displayedColumns: string[] = ['Title', 'Network', 'Block Chain', 'Coin Price', 'Price', 'Description', 'status', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   tableList: any;
+  disabled: boolean = true;
+  subVerify: any;
 
   constructor(
     private apiService: ApiService,
@@ -43,6 +45,18 @@ export class TransactionComponent implements OnInit{
         this.dataSource = new MatTableDataSource(this.tableList);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
+  }
+
+  checkTransaction(row: any){
+    this.apiService.post('/admin/subscription-verify',{row}).subscribe(
+      (response: any) => {
+        console.log('transaction',response);
+        this.subVerify = response.res;
       },
       (err: any) => {
         console.log('err',err);

@@ -5,6 +5,7 @@ import { UsersComponent } from './users/users.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HistoryComponent } from './history/history.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PricingComponent } from './pricing/pricing.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'price',
-        component: UsersComponent,
+        component: PricingComponent,
         data: { title: 'Price' }
       },
       {
@@ -29,7 +30,12 @@ const routes: Routes = [
         path: 'history',
         component: HistoryComponent,
         data: { title: 'History' }
-      }
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: { title: 'User' }
+      },
     ]
   }
 ];

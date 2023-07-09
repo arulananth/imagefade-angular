@@ -13,6 +13,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { PreviewImageComponent } from './preview-image/preview-image.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { AlertPaymentComponent } from './alert/alert-payment/alert-payment.component';
+import { VerifyTransactionComponent } from './alert/verify-transaction/verify-transaction.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TransactionComponent } from './transaction/transaction.component';
     ProfileComponent,
     BuyPlanComponent,
     PreviewImageComponent,
-    TransactionComponent
+    TransactionComponent,
+    AlertPaymentComponent,
+    VerifyTransactionComponent
   ],
   imports: [
     CommonModule,

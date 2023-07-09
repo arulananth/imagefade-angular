@@ -26,7 +26,7 @@
                       </ul>
                     </li>
                   </ul>
-                  <div class="button-plan mt-4">
+                  <div class="button-plan mt-4" *ngIf="userId">
                     <button mat-raised-button class="plan-buy-btn" (click)="buyPlanDialog(price)">Buy</button>
                   </div>
                 </div>

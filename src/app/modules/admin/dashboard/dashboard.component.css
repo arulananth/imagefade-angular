@@ -4,6 +4,9 @@
 .mb-60 {
   margin-bottom: 60px;
 }
+.dashboard-title{
+  color: #9c5451;
+}
 /* Apply the dark theme to the table */
 .mat-table {
   color: #fff;

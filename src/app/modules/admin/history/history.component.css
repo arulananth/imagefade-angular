@@ -4,3 +4,14 @@
 .mb-60 {
   margin-bottom: 60px;
 }
+.no_data_field{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.view-image{
+  cursor: pointer;
+}
+.pricing-title{
+  color: #9c5451;
+}
