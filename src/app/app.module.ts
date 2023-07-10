@@ -10,7 +10,6 @@ import { MaterialModule } from './modules/material.module';
 import { JwtInterceptor } from './shared/guard/httpInterceptor';
 import { ErrorInterceptor } from './shared/guard/ErrorInterceptor';
 import { AuthService } from './shared/services/auth.service';
-import { AdminGuardGuard } from './shared/guard/authguard.guard';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { AdminGuardGuard } from './shared/guard/authguard.guard';
       useClass: ErrorInterceptor,
       multi: true,
     },
-    AuthService,
-    AdminGuardGuard
+    AuthService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

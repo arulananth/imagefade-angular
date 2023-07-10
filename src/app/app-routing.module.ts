@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'pages/home',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: 'auth',
@@ -52,9 +52,9 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   providers: [
-    // AuthGuard,
-    // UserGuard,
-    // AdminGuard
+    AuthGuard,
+    UserGuard,
+    AdminGuard
   ],
 })
 export class AppRoutingModule {}

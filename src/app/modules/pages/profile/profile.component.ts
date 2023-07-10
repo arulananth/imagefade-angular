@@ -30,8 +30,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group({
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]]
       // password: ['', [Validators.required,
       //   Validators.pattern(
       //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
@@ -39,7 +39,16 @@ export class ProfileComponent implements OnInit {
       //   Validators.minLength(8),
       //   Validators.maxLength(20)]
       // ]
-    });
+    }, {validator: this.passwordMatchValidator});
+  }
+
+  passwordMatchValidator(formGroup: FormGroup): { [key: string]: boolean } | null {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    if (password !== confirmPassword && confirmPassword !== '') {
+      formGroup.get('confirmPassword')?.setErrors({ 'mismatch': true });
+    }
+    return null;
   }
 
   public hasError = (controlName: string, errorName: string) => {

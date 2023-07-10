@@ -15,16 +15,8 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    if (
-      !!localStorage.getItem('currentUser') &&
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    if ( !!localStorage.getItem('currentUser') && !!localStorage.getItem('Token') &&
       !!JSON.parse(localStorage.getItem('currentUser') || '')['_id']
     ) {
       let roleType = JSON.parse(localStorage.getItem('currentUser') || '');
@@ -34,4 +26,5 @@ export class AuthGuard implements CanActivate {
       return true;
     }
   }
+
 }

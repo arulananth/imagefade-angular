@@ -29,3 +29,7 @@
 .action-pointer{
   cursor: pointer;
 }
+
+.pagination-style ::ng-deep.mat-mdc-form-field:hover {
+  background-color: transparent;
+}

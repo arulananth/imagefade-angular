@@ -1,7 +1,7 @@
 <div class="containers">
   <app-header></app-header>
     <div id="main-content">
-      <section class="servicess pt-130">
+      <section class="servicess pt-130 form-section">
         <div class="container p-0 bg-maincolor">
           <div class="row justify-content-center mx-0" style="height: 100vhs;">
             <div class="col-lg-12 col-md-12 col-sm-12 m-auto form-card">
@@ -35,9 +35,11 @@
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                       <mat-error *ngIf="hasError('password', 'required')">Please enter your password.</mat-error>
-                      <mat-error *ngIf="hasError('password', 'pattern')">Password must contain (1) Uppercase character, (1) special character, (1) number, it should be 8 characters and more!</mat-error>
+                      <mat-error *ngIf="hasError('password', 'minlength')">Password must be greater than 8 characters!</mat-error>
+                      <mat-error *ngIf="hasError('password', 'maxlength')">Password must be less than 20 characters!</mat-error>
+                      <!-- <mat-error *ngIf="hasError('password', 'pattern')">Password must contain (1) Uppercase character, (1) special character, (1) number, it should be 8 characters and more!</mat-error>
                       <mat-error *ngIf="hasError('password', 'maxlength')">Password must be less than20 characters!</mat-error>
-                      <mat-error *ngIf="hasError('password', 'serverError')">{{registerForm.controls['password'].errors.message}}</mat-error>
+                      <mat-error *ngIf="hasError('password', 'serverError')">{{registerForm.controls['password'].errors.message}}</mat-error> -->
                     </mat-form-field>
 
                     <div class="register-nxt text-right pb-3 pt-2">
