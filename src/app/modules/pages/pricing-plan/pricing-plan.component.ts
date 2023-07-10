@@ -11,11 +11,12 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./pricing-plan.component.css']
 })
 export class PricingPlanComponent implements OnInit {
-
+ 
   priceList: any = [];
   userId:string;
   userRole: any;
-
+  currentPlan:boolean=false;
+  subscriptionPlan:any='';
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
@@ -28,7 +29,33 @@ export class PricingPlanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPrice();
+    
+    if(this.userId)
+    {
+    this.apiService.get('/users/me').subscribe(
+      (response: any) => {
+       let showMachine = response.res;
+       this.getPrice();
+        if(showMachine && showMachine.subscriptionId)
+        {
+           let expireDate= showMachine.subscriptionId.expireDate;
+           if(new Date(expireDate) > new Date())
+           {
+              this.currentPlan=true;
+              this.subscriptionPlan =  showMachine.membershipId._id;
+           }
+        }
+        
+      },
+      (err: any) => {
+        console.log('err',err);
+      }
+    );
+    }
+    else 
+    {
+      this.getPrice();
+    }
   }
 
   getPrice(){
@@ -56,9 +83,10 @@ export class PricingPlanComponent implements OnInit {
   }
 
   buyPlanDialog(price: any){
-    if(this.userId)
+    if(this.userRole)
     {
     // this.route.navigate(['pages/pricing/' + price._id]);
+   
     this.dialog.open(BuyPlanComponent, {
       width: '40%',
       data: { price: price }

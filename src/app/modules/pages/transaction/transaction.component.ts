@@ -44,11 +44,24 @@ export class TransactionComponent implements OnInit {
       }
     );
   }
-
-  Transaction(){
+  showCoinSys(cointype:string)
+  {
+     let coin="ETH";
+     if(cointype=="bitcoin")
+     coin="BTC";
+     return coin;
+  }
+  showDate(item:any)
+  {
+    if(item.expireDate) 
+     return item.expireDate;
+     else 
+     return item.createdAt
+  }
+  Transaction(item:any){
     const dialogRef = this.dialog.open(VerifyTransactionComponent, {
       width: '35%',
-      data: { data: '' }
+      data: { data: item }
     });
 
     dialogRef.afterClosed().subscribe((result: any) => { });

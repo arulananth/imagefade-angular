@@ -15,3 +15,13 @@
 .pricing-title{
   color: #9c5451;
 }
+.fa-close
+{
+  color:red;
+  font-size:40px;
+  float: right;
+  position: absolute;
+  right:10px;
+  top:2px;
+  cursor:pointer;
+}

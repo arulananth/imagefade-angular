@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-history',
@@ -21,19 +22,23 @@ export class HistoryComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
   tableList: any;
-
+  image:any;
   constructor(
     private apiService: ApiService,
     private toastr: ToastrService,
     private route: Router,
     public dialog: MatDialog,
+
     public userAuth: AuthService
   ) { }
 
   ngOnInit(): void {
     this.getTable();
   }
-
+  showImage(row:any)
+  {
+    this.image = environment.BACKEND_BASE_URL+"/"+row.deepNudeFile
+  }
   getTable(){
     this.apiService.post('/admin/upload-history',{}).subscribe(
       (response: any) => {

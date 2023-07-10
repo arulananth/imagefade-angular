@@ -19,20 +19,22 @@
                       <span class="badge badge-success" *ngIf="item.status == '1'">Success</span>
                       <span class="badge badge-danger" *ngIf="item.status == '2'">Cancel</span>
                     </h4>
-                    <p class="text-color-head mb-0"><b>{{ item.expireDate | date:'shortDate'}}</b></p>
-                  </mat-panel-title>
+                    <p class="text-color-head mb-0"><b>{{ showDate(item) | date:'medium'}}</b></p>
+                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <div class="p-3">
                   <div class="labels">
-                    <div class="text-color-head"><label>{{ item.blockchain }}</label></div>
-                    <div class="text-color-head"><label>{{ item.coinPrice }}</label></div>
-                    <div class="text-color-head"><label>{{ item.price }}</label></div>
-                    <div class="text-color-head"><label>{{item.description}}</label></div>
+                    <div class="text-color-head">Blockchain:<label>{{ item.blockchain }}</label></div>
+                    <div class="text-color-head">Network:<label>{{ item.network }}</label></div>
+                    <div class="text-color-head">Coin price:<label>{{showCoinSys(item.blockchain)}} {{ item.coinPrice }}</label></div>
+                    <div class="text-color-head">Price:<label>${{ item.price }}</label></div>
+                    <div class="text-color-head">TransactionID:<label>{{ item.transactionId }}</label></div>
+                    <div class="text-color-head">Description:<label>{{item.description}}</label></div>
                   </div>
                   <div class="row" *ngIf="item.status == '0'">
                     <div class="col-md-12 text-center mt-3 mb-40">
-                      <button class="upload-btn" mat-button (click)="Transaction()">Check Transaction</button>
+                      <button class="upload-btn" mat-button (click)="Transaction(item)">Verify the Transaction</button>
                     </div>
                   </div>
                 </div>

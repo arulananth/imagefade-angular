@@ -53,10 +53,25 @@ export class TransactionComponent implements OnInit{
   }
 
   checkTransaction(row: any){
-    this.apiService.post('/admin/subscription-verify',{row}).subscribe(
+    let formData=row;
+    formData.user_id = row.user_id._id;
+    formData.plan_id = row.plan_id._id;
+    this.apiService.post('/admin/subscription-verify',formData).subscribe(
       (response: any) => {
-        console.log('transaction',response);
+       
         this.subVerify = response.res;
+        if(response && response.res && response.res.paymentRequest)
+        {
+          let paymentRequest= response.res.paymentRequest;
+          if(paymentRequest.status=="1" && paymentRequest.newDate!=null)
+          {
+            this.toastr.success('Transaction verified successfully!');
+          }
+          else 
+          {
+            this.toastr.error('Transaction is cancelled!');
+          }
+        }
       },
       (err: any) => {
         console.log('err',err);

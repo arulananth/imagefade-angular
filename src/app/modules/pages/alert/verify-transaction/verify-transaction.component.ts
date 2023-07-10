@@ -24,14 +24,28 @@ export class VerifyTransactionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+   this.startverification()
   }
 
   startverification(){
-    this.apiService.post('/users/subscription-start', {}).subscribe(
+    let formData:any= this.modeldata.data;
+    formData.user_id= formData.user_id._id;
+    formData.plan_id = formData.plan_id._id;
+    this.apiService.post('/users/subscription-check', formData).subscribe(
       (response: any) => {
-        console.log('verified',response);
-        this.toastr.success('Transaction verified successfully... ');
+        if(response && response.res && response.res.paymentRequest)
+        {
+          let paymentRequest= response.res.paymentRequest;
+          if(paymentRequest.status=="1" && paymentRequest.newDate!=null)
+          {
+            this.toastr.success('Transaction verified successfully!');
+          }
+          else 
+          {
+            this.toastr.error('Transaction is cancelled!');
+          }
+        }
+       
         this.matDialogRef.close(response);
       },
       (err: any) => {

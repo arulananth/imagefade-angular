@@ -99,16 +99,18 @@ export class HomepageComponent implements OnInit {
     let files: FileList = event.target.files;
     let filer : File = files[0];
     let formData = new FormData();
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    let fileContent= reader.result;
     formData.append("file", filer);
     formData.append("user_id",this.userId)
+   
     this.apiService.post("/upload/withPhoto",formData).subscribe((msg:any)=>{
-       console.log(msg)
+      
     },(error:any)=>{
       console.log(error)
     })
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
+   
     reader.onload = () => {
       const dialogRef = this.dialog.open(PreviewImageComponent, {
         width: '50%',
@@ -116,6 +118,7 @@ export class HomepageComponent implements OnInit {
         
       });
     };
+    
   }
 
   // handleFileInputChange(event: any) {

@@ -20,12 +20,12 @@
 
                     <ng-container matColumnDef="name">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
-                      <td mat-cell *matCellDef="let row">{{ row?.name ? row?.name : '-' }}</td>
+                      <td mat-cell *matCellDef="let row">{{ row?.user_id ? row?.user_id.name : '-' }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="email">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Email </th>
-                      <td mat-cell *matCellDef="let row">{{ row?.email ? row?.email : '-' }}</td>
+                      <td mat-cell *matCellDef="let row">{{ row?.user_id ? row?.user_id.email : '-' }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="date">
@@ -40,7 +40,7 @@
 
                     <ng-container matColumnDef="action">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-                      <td mat-cell *matCellDef="let row">
+                      <td mat-cell *matCellDef="let row" (click)="showImage(row);dialog.showModal()">
                         <span class="view-image" title="View Image"><i class="fa-solid fa-eye"></i></span>
                       </td>
                     </ng-container>
@@ -70,3 +70,15 @@
   </div>
   <app-footer></app-footer>
 </div>
+<dialog #dialog>
+  <div>
+    <i class="fa fa-window-close fa-close" aria-hidden="true" (click)="dialog.close()"></i>
+  </div>
+  
+  <div>
+    
+    <img src="{{image}}" />
+    
+  </div>
+  
+</dialog>
