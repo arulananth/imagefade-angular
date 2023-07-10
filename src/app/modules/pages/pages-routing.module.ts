@@ -9,10 +9,12 @@ import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { BuyPlanResolver } from '../../shared/services/buyplan.resolver';
 import { TransactionComponent } from './transaction/transaction.component';
 import { PreviewImageComponent } from './preview-image/preview-image.component';
+import { UserGuard } from 'src/app/shared/guard/user.guard';
 
 const routes: Routes = [
   {
     path: 'pages',
+    // canActivate: [UserGuard],
     children: [
     {
       path: 'home',

@@ -6,10 +6,12 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { HistoryComponent } from './history/history.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { AdminGuard } from 'src/app/shared/guard/admin.guard';
 
 const routes: Routes = [
   {
     path: 'admin',
+    // canActivate: [AdminGuard],
     children: [
       {
         path: 'dashboard',

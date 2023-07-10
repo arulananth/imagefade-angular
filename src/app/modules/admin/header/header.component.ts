@@ -8,10 +8,14 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  userRole: any;
+  userEmail: any;
+
   constructor(
     private authservice: AuthService
   ) {
-
+    this.userRole = this.authservice.userRole;
+    this.userEmail = this.authservice.userEmail;
   }
 
   ngOnInit(): void {
