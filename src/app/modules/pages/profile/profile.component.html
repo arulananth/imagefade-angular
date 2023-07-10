@@ -24,7 +24,8 @@
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
                   <mat-error *ngIf="hasError('password', 'required')">Please enter your password.</mat-error>
-                  <mat-error *ngIf="hasError('password', 'serverError')">{{changePasswordForm.controls['password'].errors.message}}</mat-error>
+                  <mat-error *ngIf="hasError('password', 'minlength')">Password must be greater than 8 characters!</mat-error>
+                  <mat-error *ngIf="hasError('password', 'maxlength')">Password must be less than 20 characters!</mat-error>
                 </mat-form-field>
 
                 <mat-form-field  class="w-100">
@@ -34,9 +35,11 @@
                     <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
                   <mat-error *ngIf="hasError('confirmPassword', 'required')">Please enter your confirm password.</mat-error>
+                  <mat-error *ngIf="hasError('confirmPassword', 'minlength')">Confirm Password must be greater than 8 characters!</mat-error>
+                  <mat-error *ngIf="hasError('confirmPassword', 'maxlength')">Confirm Password must be less than 20 characters!</mat-error>
                   <!-- <mat-error *ngIf="hasError('password', 'pattern')">Password must contain (1) Uppercase character, (1) special character, (1) number, it should be 8 characters and more!</mat-error>
                   <mat-error *ngIf="hasError('password', 'maxlength')">Password must be less than20 characters!</mat-error> -->
-                  <mat-error *ngIf="hasError('confirmPassword', 'serverError')">{{changePasswordForm.controls['confirmPassword'].errors.message}}</mat-error>
+                  <mat-error *ngIf="changePasswordForm.get('confirmPassword').hasError('mismatch')">Passwords do not match.</mat-error>
                 </mat-form-field>
 
                 <div class="pt-3">

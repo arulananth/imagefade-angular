@@ -30,8 +30,8 @@ export class ResetPasswordComponent implements OnInit {
     this.resetForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       token: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]]
       // password: ['', [
       //   Validators.required,
       //   Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/),
@@ -46,17 +46,14 @@ export class ResetPasswordComponent implements OnInit {
       // ], this.passwordMatchValidator()]
     }, {validator: this.passwordMatchValidator});
   }
-  passwordMatchValidator(): ValidatorFn {
-    return (formGroup: any): ValidationErrors | null => {
-      const password = formGroup.get('password')?.value;
-      const confirmPassword = formGroup.get('confirmPassword')?.value;
 
-      if (password !== confirmPassword) {
-        return { passwordMismatch: true };
-      }
-
-      return null;
-    };
+  passwordMatchValidator(formGroup: FormGroup): { [key: string]: boolean } | null {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    if (password !== confirmPassword && confirmPassword !== '') {
+      formGroup.get('confirmPassword')?.setErrors({ 'mismatch': true });
+    }
+    return null;
   }
 
   public hasError = (controlName: string, errorName: string) => {

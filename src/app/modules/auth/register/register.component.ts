@@ -29,13 +29,14 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required]],
-      password: ['', [Validators.required,
-        Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-        ),
-        Validators.minLength(8),
-        Validators.maxLength(20)]
-      ]
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]]
+      // password: ['', [Validators.required,
+      //   Validators.pattern(
+      //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+      //   ),
+      //   Validators.minLength(8),
+      //   Validators.maxLength(20)]
+      // ]
     });
   }
 
@@ -51,7 +52,7 @@ export class RegisterComponent implements OnInit {
       (response: any) => {
         console.log('response',response);
         this.toastr.success('Register Successfully...');
-       
+
         this.router.navigate(['/auth/login']);
       },
       (err: any) => {
