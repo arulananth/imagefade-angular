@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable, Output } from "@angular/core";
 import { ApiService } from "../services/api.service";
 import { Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Injectable({
   providedIn: "root",
@@ -13,7 +14,8 @@ export class AuthService {
 
   constructor(
     private http: ApiService,
-    private router: Router
+    private router: Router,
+    private location: Location
     ) {
       let user: any = localStorage.getItem('currentUser');
       if (user) {
@@ -29,7 +31,9 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('Token');
     this.userRole = null; // Set userRole to null upon logout
-    this.router.navigate(['/pages/home']);
+    // this.router.navigate(['/pages/home']);
+    this.location.go('/pages/home');
+    location.reload();
   }
 
 }
