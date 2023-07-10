@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit{
     public router: Router,
     public http: HttpClient,
     private apiService: ApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location
   ) {
 
   }
@@ -56,7 +58,9 @@ export class LoginComponent implements OnInit{
             localStorage.setItem('Token', JSON.stringify(response.res.token));
             localStorage.setItem('currentUser', JSON.stringify(response.res.user));
             setTimeout(() => {
-              this.router.navigate(['/pages/home']);
+              this.location.go('/pages/home');
+              location.reload();
+              // this.router.navigate(['/pages/home']);
             }, 1500);
           }
           else if(response.res.user.role === 'admin'){
@@ -64,7 +68,9 @@ export class LoginComponent implements OnInit{
             localStorage.setItem('Token', JSON.stringify(response.res.token));
             localStorage.setItem('currentUser', JSON.stringify(response.res.user));
             setTimeout(() => {
-              this.router.navigate(['/admin/dashboard']);
+              this.location.go('/admin/dashboard');
+              location.reload();
+              // this.router.navigate(['/admin/dashboard']);
             }, 1500);
           }
         }

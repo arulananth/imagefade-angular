@@ -1,24 +1,24 @@
 .pt-130{
   padding-top: 130px;
 }
-.form-section .mat-form-field-invalid .mat-input-element {
+.mat-form-field-invalid .mat-input-element {
   border-color: #f44336;
 }
 
-.form-section .mat-form-field-invalid .mat-form-field-label {
+.mat-form-field-invalid .mat-form-field-label {
   color: #f44336;
 }
 
 .form-card{
   padding: 50px 30px;
 }
-::ng-deep.mdc-text-field:not(.mdc-text-field--disabled) ::ng-deep.mdc-floating-label {
+.form-section ::ng-deep.mdc-text-field:not(.mdc-text-field--disabled) ::ng-deep.mdc-floating-label {
   color: #999;
 }
 .form-section ::ng-deep.mdc-text-field--invalid:not(.mdc-text-field--disabled) ::ng-deep.mdc-floating-label {
   color: #f44336;
 }
-.form-section .form-section ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) ::ng-deep.mdc-line-ripple::before {
+.form-section ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) ::ng-deep.mdc-line-ripple::before {
   border-bottom-color: rgba(255,255,255,0.05);
 }
 .form-section ::ng-deep.mdc-text-field--invalid:not(.mdc-text-field--disabled) ::ng-deep.mdc-line-ripple::before {
@@ -52,14 +52,14 @@
 }
 .social-link-g > a{
   cursor: pointer;
-  color: #9c5451;
+  color: #3f51b5;
   font-weight: 600;
 }
 .social-link-app > a{
   cursor: pointer;
   padding-left: 10px;
   text-decoration: none;
-  color: #9c5451;
+  color: #3f51b5;
   font-weight: 600;
 }
 .fab.fa-apple{
