@@ -14,8 +14,8 @@
         <div class="row mb-5">
           <div class="col-md-12">
 
-            <ng-container >
-              <ng-container *ngIf="tableList?.length > 0; else noRecords">
+            <!-- <ng-container >
+              <ng-container *ngIf="tableList?.length > 0; else noRecords"> -->
                 <div class="mat-elevation-z8">
                   <table mat-table [dataSource]="dataSource" matSort class="dark-theme" >
 
@@ -68,18 +68,21 @@
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell " colspan="10">No data available</td>
+                    </tr>
 
                   </table>
 
                   <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]" aria-label="Select page of users" ></mat-paginator>
                 </div>
-              </ng-container>
+              <!-- </ng-container>
               <ng-template #noRecords>
                 <div class="col-md-12 text-center py-4">
                   <h3>There are no items to display!</h3>
                 </div>
               </ng-template>
-            </ng-container>
+            </ng-container> -->
 
           </div>
         </div>
